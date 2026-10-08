@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>THE SIX STONES • School of AI @ ESI</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#929092",
+            "tertiary-fixed-dim": "#c8c6c8",
+            "on-tertiary-fixed": "#1b1b1d",
+            "primary": "#ffb3ad",
+            "tertiary": "#c8c6c8",
+            "inverse-surface": "#e5e2e3",
+            "surface-dim": "#131314",
+            "on-tertiary-fixed-variant": "#474649",
+            "secondary-container": "#46464b",
+            "outline": "#ab8885",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#e4bdba",
+            "surface-container-low": "#1c1b1c",
+            "on-secondary-fixed-variant": "#46464b",
+            "primary-fixed-dim": "#ffb3ad",
+            "primary-container": "#ff544e",
+            "on-surface": "#e5e2e3",
+            "on-tertiary-container": "#2a292b",
+            "surface-container-highest": "#353436",
+            "surface": "#131314",
+            "on-primary-fixed": "#410003",
+            "surface-tint": "#ffb3ad",
+            "on-primary": "#680008",
+            "surface-container": "#201f20",
+            "secondary": "#c6c6cb",
+            "tertiary-fixed": "#e4e2e4",
+            "surface-bright": "#3a393a",
+            "on-secondary": "#2f3034",
+            "inverse-on-surface": "#313031",
+            "surface-container-high": "#2a2a2b",
+            "surface-container-lowest": "#0e0e0f",
+            "on-background": "#e5e2e3",
+            "on-secondary-fixed": "#1a1b1f",
+            "outline-variant": "#5b403d",
+            "secondary-fixed": "#e3e2e7",
+            "on-secondary-container": "#b5b4ba",
+            "on-error": "#690005",
+            "on-primary-fixed-variant": "#930010",
+            "on-primary-container": "#5c0006",
+            "on-error-container": "#ffdad6",
+            "background": "#131314",
+            "error-container": "#93000a",
+            "primary-fixed": "#ffdad6",
+            "inverse-primary": "#bb161f",
+            "on-tertiary": "#303032",
+            "surface-variant": "#353436",
+            "secondary-fixed-dim": "#c6c6cb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "margin": "3rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": [ "Inter" ],
+            "headline-xl": [ "Inter" ],
+            "label-caps": [ "Inter" ],
+            "title-sm": [ "Inter" ],
+            "headline-lg": [ "Inter" ],
+            "display-xl": [ "Inter" ],
+            "display-lg": [ "Inter" ],
+            "headline-md": [ "Inter" ],
+            "body-sm": [ "Inter" ],
+            "body-md": [ "Inter" ],
+            "meta-mono": [ "Space Mono" ],
+            "timer-display": [ "Space Mono" ]
+          },
+          "fontSize": {
+            "body-lg": [ "1.25rem", { "lineHeight": "1.5", "letterSpacing": "-0.01em", "fontWeight": "400" } ],
+            "headline-xl": [ "2.5rem", { "lineHeight": "1.15", "letterSpacing": "-0.025em", "fontWeight": "700" } ],
+            "label-caps": [ "0.75rem", { "lineHeight": "1.1", "letterSpacing": "0.15em", "fontWeight": "700" } ],
+            "title-sm": [ "1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" } ],
+            "headline-lg": [ "2rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" } ],
+            "display-xl": [ "4.5rem", { "lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "800" } ],
+            "display-lg": [ "3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" } ],
+            "headline-md": [ "1.5rem", { "lineHeight": "1.25", "letterSpacing": "-0.015em", "fontWeight": "600" } ],
+            "body-sm": [ "0.875rem", { "lineHeight": "1.45", "letterSpacing": "0.005em", "fontWeight": "400" } ],
+            "body-md": [ "1rem", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" } ],
+            "meta-mono": [ "0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" } ],
+            "timer-display": [ "5rem", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "700" } ]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- Fixed Top Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30">
+    <div class="h-16 w-full px-margin flex items-center justify-between">
+      <div class="flex items-center space-x-space-md">
+        <div class="flex items-center space-x-space-sm cursor-pointer" id="nav-brand">
+          <span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
+          <span class="font-label-caps text-label-caps text-on-surface tracking-widest">THE SIX STONES</span>
+        </div>
+        <div class="h-4 w-px bg-outline-variant/40"></div>
+        <span class="font-meta-mono text-meta-mono text-secondary">SCHOOL OF AI @ ESI</span>
+      </div>
+      <nav class="hidden md:flex items-center space-x-space-lg" id="main-nav">
+        <a aria-current="page" class="transition-colors py-1 text-on-surface font-bold border-b-2 border-primary-container cursor-pointer" data-path="arena" id="nav-arena">ARENA</a>
+        <a class="font-meta-mono text-meta-mono text-secondary hover:text-on-surface transition-colors py-1 cursor-pointer" data-path="stones-matrix" id="nav-matrix">STONES MATRIX</a>
+        <a class="font-meta-mono text-meta-mono text-secondary hover:text-on-surface transition-colors py-1 cursor-pointer" data-path="standings" id="nav-standings">STANDINGS</a>
+      </nav>
+      <div class="flex items-center space-x-space-lg">
+        <div class="flex items-center space-x-space-sm px-space-sm py-1 rounded-DEFAULT bg-surface-container-low border border-outline-variant/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+          <span class="font-meta-mono text-meta-mono text-secondary uppercase">LIVE COMPETITION</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="font-meta-mono text-xs text-primary hidden md:inline truncate max-w-[120px]" id="header-contestant-tag"></span>
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewports Root -->
+  <main class="w-full pt-16 flex-1 flex flex-col items-center justify-center">
+    <div class="w-full max-w-[860px] mx-auto px-gutter py-space-xl flex flex-col items-center justify-center">
+      <div class="flex flex-col w-full" id="app-viewport">
+
+        <!-- ========================================== -->
+        <!-- VIEW 1: HOME SCREEN (From stitch home)     -->
+        <!-- ========================================== -->
+        <section id="view-home" class="view-container w-full flex flex-col items-center justify-center">
+          <div class="relative w-full flex flex-col items-center justify-center py-space-md select-none text-center">
+            <!-- Ambient Subtle Radial Depth -->
+            <div class="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none opacity-40">
+              <div class="w-[580px] h-[340px] bg-surface-container-high rounded-full blur-3xl"></div>
+            </div>
+
+            <!-- Telemetry Header: Round Sequence & Station Tag -->
+            <div class="flex items-center space-x-space-md mb-space-xl opacity-80">
+              <span class="font-meta-mono text-meta-mono text-secondary tracking-widest uppercase text-[11px]">SYS // ARCHETYPE IDENTIFIER</span>
+              <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+              <span class="font-meta-mono text-meta-mono text-secondary tracking-widest uppercase text-[11px]">EDITION 2025</span>
+            </div>
+
+            <!-- The Six Stones Indicator Matrix -->
+            <div aria-label="The Six Stones Spectrum" class="flex items-center justify-center space-x-space-lg mb-space-xl" role="region">
+              <!-- Stone 1: MIND -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EAB308] opacity-85 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Mind</span>
+              </div>
+              <!-- Stone 2: TIME -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] opacity-85 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Time</span>
+              </div>
+              <!-- Stone 3: REALITY -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E23636] opacity-90 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Reality</span>
+              </div>
+              <!-- Stone 4: SPACE -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#3B82F6] opacity-85 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Space</span>
+              </div>
+              <!-- Stone 5: POWER -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#A855F7] opacity-85 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Power</span>
+              </div>
+              <!-- Stone 6: SOUL -->
+              <div class="group flex flex-col items-center space-y-space-xs cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F97316] opacity-85 transition-transform duration-200 group-hover:scale-125"></span>
+                <span class="font-meta-mono text-[9px] uppercase tracking-widest text-secondary opacity-60 group-hover:opacity-100 transition-opacity">Soul</span>
+              </div>
+            </div>
+
+            <!-- Monumental Editorial Typography Block -->
+            <div class="flex flex-col items-center mb-space-xl">
+              <h1 class="font-display-xl text-display-xl font-extrabold tracking-tight text-on-surface uppercase leading-none select-none">
+                THE SIX STONES
+              </h1>
+              <p class="font-headline-md text-headline-md font-normal text-secondary mt-space-md tracking-tight">
+                Which Stone matches you?
+              </p>
+            </div>
+
+            <!-- Primary & Secondary Interactive Trigger Hub -->
+            <div class="flex flex-col items-center space-y-space-md mb-space-xl w-full max-w-xs">
+              <!-- Primary Action: START QUIZ -->
+              <button class="w-full h-14 bg-primary-container hover:bg-[#C52828] active:bg-[#A71D1D] text-white font-title-sm text-title-sm tracking-wider uppercase rounded-lg transition-all duration-150 flex items-center justify-center space-x-space-sm shadow-md active:scale-[0.99] focus:outline-none" id="btn-start-quiz" type="button">
+                <span>[ START QUIZ ]</span>
+                <span class="material-symbols-outlined text-[20px] transition-transform duration-150 group-hover:translate-x-0.5">arrow_forward</span>
+              </button>
+
+              <!-- Secondary Subtext Trigger: HOW IT WORKS Modal Trigger -->
+              <button class="text-secondary hover:text-on-surface font-meta-mono text-meta-mono tracking-widest uppercase transition-colors duration-150 py-1 inline-flex items-center space-x-space-xs focus:outline-none" id="btn-how-it-works" type="button">
+                <span>HOW IT WORKS</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+              </button>
+            </div>
+
+            <!-- Structural Minimal Divider -->
+            <div class="w-16 h-px bg-surface-container-high mb-space-lg"></div>
+
+            <!-- Institutional Terminal Footer Telemetry -->
+            <div class="flex flex-col items-center space-y-space-xs">
+              <div class="flex items-center space-x-space-xs text-secondary font-body-sm text-body-sm opacity-80">
+                <span class="text-on-surface font-medium">School of AI @ ESI</span>
+                <span class="text-outline-variant font-bold">•</span>
+                <span>Single-PC Live Event Edition</span>
+              </div>
+              <div class="flex items-center space-x-space-md text-[11px] font-meta-mono text-secondary opacity-50 tracking-wider">
+                <span>SESSION: STN-9021</span>
+                <span>•</span>
+                <span>LATENCY: 12ms</span>
+                <span>•</span>
+                <span>SECURE TERMINAL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 2: ENTER CONTESTANT NAME              -->
+        <!-- ========================================== -->
+        <section id="view-enter-name" class="view-container view-hidden w-full max-w-[620px] mx-auto">
+          <div class="relative w-full overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/30 shadow-2xl p-space-xl flex flex-col space-y-space-lg">
+            
+            <!-- Telemetry Header -->
+            <div class="flex items-center justify-between border-b border-outline-variant/20 pb-space-md">
+              <div class="flex items-center space-x-space-sm">
+                <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                <span class="font-meta-mono text-meta-mono text-secondary tracking-widest uppercase text-xs">REGISTRATION PROTOCOL</span>
+              </div>
+              <span class="font-meta-mono text-meta-mono text-tertiary text-xs">NODE::L0-AUTH</span>
+            </div>
+
+            <!-- Heading Block -->
+            <div class="flex flex-col space-y-space-xs">
+              <div class="flex items-center space-x-space-sm">
+                <span class="w-4 h-0.5 bg-primary-container inline-block"></span>
+                <span class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">CONTESTANT INITIALIZATION</span>
+              </div>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight uppercase">
+                ENTER CONTESTANT NAME
+              </h2>
+              <p class="font-body-md text-body-md text-secondary leading-relaxed">
+                Enter your competitor callsign to register this live session on the kiosk terminal.
+              </p>
+            </div>
+
+            <!-- Name Input Field Container -->
+            <form id="form-contestant-name" class="flex flex-col space-y-space-md" onsubmit="return false;">
+              <div class="flex flex-col space-y-2">
+                <label for="input-contestant-name" class="font-meta-mono text-meta-mono text-on-surface uppercase text-xs tracking-wider flex items-center justify-between">
+                  <span>YOUR NAME / CALLSIGN</span>
+                  <span class="text-tertiary">REQUIRED</span>
+                </label>
+                <div class="relative w-full">
+                  <input
+                    id="input-contestant-name"
+                    type="text"
+                    placeholder="Your name"
+                    autocomplete="off"
+                    class="w-full h-14 bg-surface-container-lowest border border-[#242426] text-on-surface font-body-lg px-space-md rounded-lg focus:border-white focus:ring-0 focus:outline-none transition-colors placeholder:text-tertiary/60"
+                  />
+                  <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-tertiary font-meta-mono text-xs">
+                    [RETURN ↵]
+                  </div>
+                </div>
+                <!-- Validation Error Message -->
+                <div id="name-validation-error" class="hidden flex items-center space-x-space-xs text-error font-meta-mono text-xs pt-1">
+                  <span class="material-symbols-outlined text-[15px]">error</span>
+                  <span>ERROR: Contestant name is required to initialize session.</span>
+                </div>
+              </div>
+
+              <!-- Button Continue -->
+              <div class="pt-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+                <button
+                  type="button"
+                  id="btn-back-to-home"
+                  class="w-full sm:w-auto text-secondary hover:text-on-surface font-meta-mono text-meta-mono tracking-wider uppercase transition-colors py-2 flex items-center justify-center space-x-1"
+                >
+                  <span>←</span>
+                  <span>CANCEL</span>
+                </button>
+                <button
+                  type="submit"
+                  id="btn-continue-to-quiz"
+                  class="w-full sm:w-auto px-space-xl h-12 bg-primary-container hover:bg-[#C52828] active:bg-[#A71D1D] text-white font-title-sm text-title-sm tracking-wider uppercase rounded-lg transition-all duration-150 flex items-center justify-center space-x-space-sm shadow-md active:scale-[0.99] focus:outline-none"
+                >
+                  <span>[ CONTINUE ]</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Bottom Telemetry Notice -->
+            <div class="border-t border-outline-variant/20 pt-space-md flex items-center justify-between text-tertiary font-meta-mono text-[11px]">
+              <span>SINGLE CONTESTANT SESSION</span>
+              <span>ENCRYPTED MEMORY BUFFER</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 3: QUIZ CONTAINER (Dynamic 6 Stones)  -->
+        <!-- ========================================== -->
+        <section id="view-quiz" class="view-container view-hidden w-full flex flex-col">
+          <!-- Quiz Container rendered dynamically by app.js -->
+          <div id="quiz-dynamic-root" class="w-full flex flex-col"></div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 4: FINAL RESULT SCREEN (Stitch Finale)-->
+        <!-- ========================================== -->
+        <section id="view-result" class="view-container view-hidden w-full flex flex-col">
+          <div class="relative w-full overflow-hidden bg-surface-container-lowest rounded-xl p-space-lg md:p-space-xl flex flex-col justify-between min-h-[740px] border border-outline-variant/30">
+            <!-- Cinematic Ambient Layer -->
+            <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+
+            <!-- Top Telemetry & Status Anchor -->
+            <div class="w-full flex flex-col md:flex-row md:items-center justify-between pb-space-lg gap-space-md border-b border-outline-variant/20">
+              <div class="flex items-center space-x-space-md">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+                <div class="flex flex-col">
+                  <span class="font-meta-mono text-meta-mono text-secondary uppercase tracking-widest text-[11px]">VERIFICATION SUITE // TRIAL FINALE</span>
+                  <span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider" id="result-session-id">SESSION #TX-9021-ESI</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-space-sm bg-surface-container-low px-space-md py-1.5 rounded-DEFAULT">
+                <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                <span class="font-meta-mono text-meta-mono text-secondary text-xs uppercase tracking-wider">NODE STATUS: SYNCHRONIZED</span>
+              </div>
+            </div>
+
+            <!-- Core Editorial Focus Area -->
+            <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start my-auto py-space-md">
+              
+              <!-- Left Column: Primary Stone Affinity Manifest (7 cols) -->
+              <div class="lg:col-span-7 flex flex-col space-y-space-lg">
+                <div class="flex flex-col space-y-space-xs">
+                  <div class="flex items-center space-x-space-sm">
+                    <span class="w-6 h-0.5 bg-primary-container inline-block"></span>
+                    <span class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">DECISION MATRIX CONCLUDED</span>
+                  </div>
+                  <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight uppercase">
+                    THE STONES HAVE CHOSEN.
+                  </h1>
+                </div>
+
+                <!-- Winning Stone Highlight Card -->
+                <div id="result-winning-card" class="bg-surface-container-low p-space-xl rounded-lg flex flex-col space-y-space-md relative overflow-hidden border border-outline-variant/30">
+                  <div class="absolute top-0 right-0 w-32 h-32 bg-surface-bright/5 pointer-events-none rounded-bl-full"></div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-space-sm">
+                      <span id="result-winner-pip" class="w-3.5 h-3.5 rounded-full inline-block ring-4"></span>
+                      <span id="result-winner-artifact-tag" class="font-meta-mono text-meta-mono uppercase tracking-widest text-xs"></span>
+                    </div>
+                    <span id="result-winner-affinity-badge" class="font-meta-mono text-meta-mono px-2 py-0.5 rounded-DEFAULT text-[11px] tracking-wider uppercase font-bold"></span>
+                  </div>
+                  <div class="flex flex-col space-y-1">
+                    <span id="result-winner-title" class="font-display-lg text-display-lg text-on-surface tracking-tighter uppercase font-extrabold leading-none"></span>
+                    <span id="result-winner-domain" class="font-meta-mono text-meta-mono text-secondary uppercase tracking-widest text-xs pt-1"></span>
+                  </div>
+                  <div class="pt-space-sm">
+                    <p id="result-winner-quote" class="font-body-lg text-body-lg text-on-surface italic tracking-normal"></p>
+                  </div>
+                  
+                  <!-- Radar Sparkline SVG Graphic / Ceiling Bar -->
+                  <div class="w-full pt-space-sm">
+                    <div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden flex">
+                      <div id="result-winner-bar" class="h-full transition-all duration-1000 ease-out" style="width: 0%;"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] font-meta-mono text-secondary mt-1">
+                      <span>ALIGNMENT CEILING: 100%</span>
+                      <span id="result-winner-delta" class="font-bold"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Citation Metadata -->
+                <div class="flex items-center space-x-space-md text-secondary">
+                  <span class="material-symbols-outlined text-secondary text-sm">psychology</span>
+                  <p id="result-winner-citation" class="font-body-sm text-body-sm text-secondary leading-relaxed"></p>
+                </div>
+              </div>
+
+              <!-- Right Column: Elemental Affinity Breakdown Matrix (5 cols) -->
+              <div class="lg:col-span-5 flex flex-col space-y-space-md bg-surface-container-low p-space-lg rounded-lg border border-outline-variant/30">
+                <div class="flex items-center justify-between pb-space-xs">
+                  <span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase">ELEMENTAL AFFINITY BREAKDOWN</span>
+                  <span class="font-meta-mono text-meta-mono text-secondary text-xs">VECTORS: 06</span>
+                </div>
+
+                <!-- Breakdown Rows Container -->
+                <div id="result-affinity-rows" class="flex flex-col space-y-2">
+                  <!-- Populated by app.js -->
+                </div>
+
+                <!-- Telemetry Signature -->
+                <div class="pt-space-xs flex items-center justify-between font-meta-mono text-[11px] text-secondary">
+                  <span>COVARIANCE FACTOR: 0.041</span>
+                  <span class="text-on-surface-variant font-bold">SHA-256 VERIFIED</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions & Event Footer Anchor -->
+            <div class="w-full pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md border-t border-outline-variant/20">
+              <!-- Contestant Session Record Stamp -->
+              <div class="flex items-center space-x-space-sm">
+                <span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+                <div class="flex flex-col">
+                  <span class="font-meta-mono text-meta-mono text-on-surface text-xs font-semibold" id="result-contestant-stamp">
+                    Contestant Session: Anonymous
+                  </span>
+                  <span class="font-meta-mono text-secondary text-[11px]">
+                    Recorded into School of AI @ ESI Event Registry
+                  </span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <div class="flex items-center space-x-space-md w-full md:w-auto">
+                <button
+                  class="flex-1 md:flex-initial px-space-lg py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-meta-mono text-meta-mono uppercase transition-colors flex items-center justify-center space-x-space-xs"
+                  id="btn-result-view-standings"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[16px]">leaderboard</span>
+                  <span>[ VIEW STANDINGS ]</span>
+                </button>
+                <button
+                  class="flex-1 md:flex-initial px-space-xl py-space-sm rounded-lg bg-primary-container hover:bg-[#C52828] active:bg-[#A71D1D] text-white font-title-sm text-title-sm font-bold uppercase transition-transform active:scale-95 flex items-center justify-center space-x-space-xs shadow-lg"
+                  id="btn-result-next-contestant"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">restart_alt</span>
+                  <span>[ NEXT CONTESTANT ]</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 5: KIOSK RESET HANDOFF MODAL/VIEW     -->
+        <!-- ========================================== -->
+        <section id="view-kiosk-reset" class="view-container view-hidden w-full max-w-[860px] mx-auto">
+          <div class="relative w-full overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/30 shadow-2xl">
+            <div class="absolute inset-0 pointer-events-none opacity-40 bg-gradient-to-b from-primary-container/10 via-transparent to-surface-container-lowest"></div>
+            
+            <div class="relative flex items-center justify-between px-space-lg py-space-md bg-surface-container">
+              <div class="flex items-center gap-space-sm">
+                <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">STAGE TEL-04 // KIOSK ACTIVE HANDOFF</span>
+              </div>
+              <div class="flex items-center gap-space-md">
+                <span class="font-meta-mono text-meta-mono text-tertiary">ROUND: 06 / 06</span>
+                <span class="font-meta-mono text-meta-mono text-primary font-bold">STATION ID: ESI-AI-01</span>
+              </div>
+            </div>
+
+            <div class="relative p-space-xl flex flex-col items-center text-center">
+              <div class="relative mb-space-lg">
+                <div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface shadow-md">
+                  <span class="material-symbols-outlined text-[40px] text-tertiary-fixed">restart_alt</span>
+                </div>
+                <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+                  <span class="material-symbols-outlined text-sm">lock</span>
+                </div>
+              </div>
+
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container mb-space-md">
+                <span class="font-meta-mono text-meta-mono text-primary font-bold uppercase tracking-wider">TELEMETRY SECURED</span>
+                <span class="text-tertiary">•</span>
+                <span class="font-meta-mono text-meta-mono text-tertiary" id="handoff-hash-id">HASH: 9E4F-TIME-LOG</span>
+              </div>
+
+              <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight max-w-xl">
+                SESSION COMPLETE &amp; LOGGED
+              </h1>
+
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mt-space-sm" id="handoff-summary-text">
+                Contestant evaluation has been archived to the live event registry.
+              </p>
+
+              <div class="w-full max-w-md my-space-lg p-space-md rounded bg-surface-container flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between font-meta-mono text-meta-mono">
+                  <span class="text-tertiary">STONE RESONANCE GAIN</span>
+                  <span class="text-primary font-bold" id="handoff-score-gain">+940 PTS</span>
+                </div>
+                <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-primary-container h-full" id="handoff-progress-fill" style="width: 94%;"></div>
+                </div>
+                <div class="flex items-center justify-between font-label-caps text-label-caps text-tertiary uppercase">
+                  <span id="handoff-rank-advance">RANK ADVANCE: 03 → 02</span>
+                  <span id="handoff-latency">LATENCY: 142MS</span>
+                </div>
+              </div>
+
+              <button
+                class="group relative w-full max-w-md flex items-center justify-center gap-space-sm py-space-md px-space-lg rounded bg-primary-container text-white font-title-sm text-title-sm tracking-wide font-bold transition-all duration-150 hover:bg-[#C52828] active:bg-[#A71D1D] active:scale-[0.99] focus:outline-none"
+                id="btn-execute-kiosk-reset"
+                type="button"
+              >
+                <span class="material-symbols-outlined text-xl transition-transform group-hover:rotate-180 duration-300">swap_horiz</span>
+                <span>[ PREPARE KIOSK FOR NEXT CONTESTANT ]</span>
+              </button>
+
+              <p class="font-body-sm text-body-sm text-tertiary max-w-md mt-space-md">
+                Clicking will completely clear cached contestant data and return the terminal to the starting screen for the next competitor.
+              </p>
+
+              <div class="mt-space-lg pt-space-md flex items-center gap-space-xs text-on-surface-variant font-meta-mono text-meta-mono">
+                <kbd class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold shadow-sm">ESC</kbd>
+                <span>or click button to reset immediately.</span>
+              </div>
+            </div>
+
+            <div class="px-space-lg py-space-sm bg-surface-container flex items-center justify-between text-on-surface-variant">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                <span class="font-meta-mono text-meta-mono text-tertiary uppercase">SYSTEM READY FOR HANDOFF</span>
+              </div>
+              <span class="font-meta-mono text-meta-mono text-tertiary" id="kiosk-live-clock">00:00:00 UTC</span>
+            </div>
+          </div>
+
+          <!-- Purge Toast Notification -->
+          <div class="opacity-0 pointer-events-none transition-opacity duration-200 mt-space-md p-space-md rounded bg-surface-container text-center" id="reset-purge-toast">
+            <p class="font-meta-mono text-meta-mono text-primary flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base animate-spin">refresh</span>
+              <span>PURGING ACTIVE SESSION &amp; RELOADING BOOTSTRAPPER...</span>
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 6: STONES MATRIX (How it Works view)  -->
+        <!-- ========================================== -->
+        <section id="view-stones-matrix" class="view-container view-hidden w-full max-w-[780px] mx-auto py-space-md">
+          <div class="flex items-center justify-between mb-space-xl">
+            <button class="group inline-flex items-center space-x-space-sm text-secondary hover:text-on-surface transition-colors py-1" id="btn-matrix-back" type="button">
+              <span class="font-meta-mono text-meta-mono transition-transform duration-200 group-hover:-translate-x-1">←</span>
+              <span class="font-meta-mono text-meta-mono tracking-wider">BACK TO START</span>
+            </button>
+            <div class="flex items-center space-x-space-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              <span class="font-meta-mono text-[11px] text-secondary tracking-widest uppercase">SPEC: PROTOCOL 06 // SYSTEM READY</span>
+            </div>
+          </div>
+
+          <!-- Editorial Header Block -->
+          <div class="flex flex-col space-y-space-sm mb-space-xl">
+            <div class="flex items-center space-x-space-sm">
+              <span class="font-meta-mono text-meta-mono text-primary-container tracking-widest uppercase">ORIENTATION</span>
+              <span class="text-secondary/40 font-meta-mono text-meta-mono">/</span>
+              <span class="font-meta-mono text-meta-mono text-secondary tracking-widest uppercase">EVALUATION METRICS</span>
+            </div>
+            <h1 class="font-display-lg text-display-lg text-on-surface tracking-tight uppercase select-none">
+              SIX STONES.<br/>SIX CHALLENGES.<br/>ONE RESULT.
+            </h1>
+            <p class="font-body-lg text-body-lg text-secondary max-w-xl pt-space-xs leading-relaxed">
+              Each challenge probes a distinct cognitive domain to calculate your elemental resonance.
+            </p>
+          </div>
+
+          <!-- The 6 Elemental Domains Grid -->
+          <div class="flex flex-col space-y-2 mb-space-xl">
+            <!-- 01 MIND -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">01</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EAB308] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">MIND</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Logic &amp; Deductive Reasoning</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 01</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+            <!-- 02 TIME -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">02</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">TIME</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Pattern Recognition &amp; Memory</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 02</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+            <!-- 03 REALITY -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">03</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">REALITY</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Lateral Thinking &amp; Creativity</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 03</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+            <!-- 04 SPACE -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">04</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#3B82F6] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">SPACE</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Spatial Logic &amp; Strategy</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 04</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+            <!-- 05 POWER -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">05</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#A855F7] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">POWER</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Cognitive Speed &amp; High-Stakes Focus</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 05</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+            <!-- 06 SOUL -->
+            <div class="group flex items-center justify-between p-space-md rounded-DEFAULT bg-surface-container-low hover:bg-surface-container transition-colors duration-150 cursor-default">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <span class="font-meta-mono text-meta-mono text-secondary/60 w-6">06</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F97316] shrink-0"></span>
+                <span class="font-title-sm text-title-sm text-on-surface uppercase tracking-wider w-24">SOUL</span>
+                <span class="font-body-md text-body-md text-secondary truncate">Intuition &amp; Moral Decision-Making</span>
+              </div>
+              <div class="flex items-center space-x-space-sm text-secondary/50 font-meta-mono text-[11px] uppercase tracking-widest group-hover:text-on-surface transition-colors">
+                <span class="hidden sm:inline">VECTOR // 06</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action & Telemetry Footprint -->
+          <div class="flex flex-col sm:flex-row items-center justify-between pt-space-md gap-y-space-md border-t border-outline-variant/20">
+            <div class="flex flex-col space-y-1">
+              <span class="font-meta-mono text-[11px] text-secondary tracking-widest uppercase">SESSION RUNTIME: ~6 MIN</span>
+              <span class="font-meta-mono text-[11px] text-secondary/60 uppercase">CONTINUOUS COGNITIVE LOGGING ACTIVE</span>
+            </div>
+            <button class="w-full sm:w-auto px-space-xl py-space-md rounded-lg bg-primary-container hover:bg-[#C52828] active:bg-[#A71D1D] text-white font-title-sm text-title-sm uppercase tracking-wider transition-all duration-150 flex items-center justify-center space-x-space-sm shadow-md" id="btn-matrix-start-eval" type="button">
+              <span>[ START YOUR EVALUATION ]</span>
+              <span class="material-symbols-outlined text-[20px]">bolt</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 7: STANDINGS (Live Leaderboard)       -->
+        <!-- ========================================== -->
+        <section id="view-standings" class="view-container view-hidden w-full max-w-[860px] mx-auto py-space-md">
+          <div class="flex items-center justify-between mb-space-lg">
+            <button class="group inline-flex items-center space-x-space-sm text-secondary hover:text-on-surface transition-colors py-1" id="btn-standings-back" type="button">
+              <span class="font-meta-mono text-meta-mono transition-transform duration-200 group-hover:-translate-x-1">←</span>
+              <span class="font-meta-mono text-meta-mono tracking-wider">RETURN TO ARENA</span>
+            </button>
+            <div class="flex items-center space-x-space-sm">
+              <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+              <span class="font-meta-mono text-meta-mono text-secondary uppercase text-xs">EVENT STANDINGS REGISTRY</span>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-xl flex flex-col space-y-space-lg shadow-2xl">
+            <div class="flex flex-col space-y-space-xs">
+              <div class="flex items-center space-x-space-sm">
+                <span class="w-4 h-0.5 bg-primary-container inline-block"></span>
+                <span class="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">TELEMETRY RANKING</span>
+              </div>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold uppercase tracking-tight">
+                LIVE ARENA LEADERBOARD
+              </h2>
+              <p class="font-body-md text-body-md text-secondary">
+                Official scoring metrics synchronized with Node-Master telemetry.
+              </p>
+            </div>
+
+            <!-- Standings Table -->
+            <div class="w-full overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-[#242426] text-secondary font-label-caps text-label-caps uppercase text-xs">
+                    <th class="py-3 px-4">RANK</th>
+                    <th class="py-3 px-4">CONTESTANT</th>
+                    <th class="py-3 px-4">MATCHED STONE</th>
+                    <th class="py-3 px-4 text-center">AFFINITY</th>
+                    <th class="py-3 px-4 text-right">SCORE</th>
+                  </tr>
+                </thead>
+                <tbody id="standings-table-body">
+                  <!-- Populated by app.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="border-t border-outline-variant/20 pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm text-tertiary font-meta-mono text-xs">
+              <span>KIOSK NODE-01 STANDINGS CACHE</span>
+              <button id="btn-standings-play" class="text-on-surface hover:text-primary transition-colors flex items-center space-x-1 uppercase">
+                <span>[ ENGAGE NEXT CHALLENGE ]</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Editorial "How It Works" Slideover / Modal Overlay -->
+  <div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-sm hidden items-center justify-center p-gutter transition-opacity duration-200 opacity-0 pointer-events-none" id="modal-backdrop">
+    <div class="w-full max-w-lg bg-surface-container-low border border-outline-variant/30 rounded-lg p-space-xl flex flex-col space-y-space-lg text-left shadow-2xl transform scale-95 transition-transform duration-200" id="modal-dialog">
+      <div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+        <div class="flex items-center space-x-space-sm">
+          <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+          <span class="font-label-caps text-label-caps uppercase text-on-surface tracking-widest">PROTOCOL OVERVIEW</span>
+        </div>
+        <button class="text-secondary hover:text-on-surface focus:outline-none" id="btn-close-modal" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-space-md text-secondary font-body-md text-body-md leading-relaxed">
+        <p class="text-on-surface">
+          The Six Stones Archetype Matrix evaluates your cognitive reflexes, strategic appetite, and ethical heuristics under acute timed pressure.
+        </p>
+        <div class="bg-surface-container p-space-md rounded-DEFAULT space-y-space-xs border border-outline-variant/20">
+          <div class="font-meta-mono text-meta-mono text-on-surface text-[12px] uppercase tracking-wider">RULES OF ENGAGEMENT</div>
+          <ul class="font-body-sm text-body-sm space-y-1 list-disc list-inside text-secondary">
+            <li>6 rapid-fire scenario challenges (one per Stone domain).</li>
+            <li>Calculated affinity vectors update in real time based on accuracy &amp; velocity.</li>
+            <li>High-stakes speed constraint engages during the Power Stone trial.</li>
+            <li>Your dominant Stone archetype is stamped upon terminal exit.</li>
+          </ul>
+        </div>
+        <p class="font-meta-mono text-[11px] text-secondary opacity-70">
+          PRESS [ESC] OR CLICK CLOSE TO RETURN TO ARENA.
+        </p>
+      </div>
+      <div class="pt-space-xs flex justify-end">
+        <button class="px-space-lg py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-meta-mono text-meta-mono text-xs rounded-DEFAULT uppercase tracking-wider transition-colors border border-outline-variant/30" id="btn-modal-dismiss" type="button">
+          ACKNOWLEDGE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Organizer Reset Confirmation Modal (ESC Trigger) -->
+  <div class="fixed inset-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md hidden items-center justify-center p-gutter transition-opacity duration-150 opacity-0 pointer-events-none" id="organizer-modal-backdrop">
+    <div class="w-full max-w-md bg-surface-container-low border border-error/40 rounded-lg p-space-xl flex flex-col space-y-space-lg text-left shadow-2xl">
+      <div class="flex items-center space-x-space-sm text-error">
+        <span class="material-symbols-outlined text-2xl">warning</span>
+        <span class="font-label-caps text-label-caps uppercase tracking-widest font-bold">ORGANIZER MASTER RESET</span>
+      </div>
+      <p class="font-body-md text-body-md text-secondary leading-relaxed">
+        You are about to purge the current kiosk session immediately. All in-memory contestant progress, answers, and temporary states will be wiped.
+      </p>
+      <div class="flex items-center justify-end space-x-space-md pt-space-xs">
+        <button class="px-space-md py-2 text-secondary hover:text-on-surface font-meta-mono text-xs uppercase" id="btn-cancel-organizer-reset" type="button">
+          CANCEL [ESC]
+        </button>
+        <button class="px-space-lg py-2 bg-error-container hover:bg-[#B3000C] text-white font-meta-mono text-xs rounded uppercase tracking-wider font-bold shadow-md" id="btn-confirm-organizer-reset" type="button">
+          CONFIRM PURGE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Footer -->
+  <footer class="w-full border-t border-outline-variant/30 bg-surface-container-lowest/95 backdrop-blur-md">
+    <div class="h-14 w-full px-margin flex items-center justify-between text-secondary font-meta-mono text-meta-mono">
+      <div class="flex items-center space-x-space-sm">
+        <span class="text-on-surface font-medium">School of AI @ ESI</span>
+        <span class="text-outline-variant">•</span>
+        <span>Annual AI &amp; Logic Challenge</span>
+      </div>
+      <div class="flex items-center space-x-space-md">
+        <span class="text-secondary/70">KIOSK ID: NODE-01</span>
+        <div class="h-3 w-px bg-outline-variant/40"></div>
+        <div class="flex items-center space-x-space-xs cursor-pointer hover:text-on-surface transition-colors" id="footer-organizer-btn">
+          <kbd class="px-1.5 py-0.5 rounded-DEFAULT bg-surface-container-low border border-outline-variant/40 text-[10px] text-on-surface">ESC</kbd>
+          <span class="text-secondary/70">ORGANIZER RESET</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "the-six-stones-quiz",
+  "version": "1.0.0",
+  "description": "The Six Stones - Which Stone matches you? Live Quiz Competition Kiosk",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["quiz", "marvel", "the-six-stones", "kiosk", "esi"],
+  "author": "School of AI @ ESI",
+  "license": "ISC"
+}

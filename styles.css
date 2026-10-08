@@ -1,0 +1,54 @@
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+/* Subtle transitions between views */
+.view-container {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.view-hidden {
+  display: none !important;
+}
+
+/* Option hover & active states per DESIGN.md */
+.option-btn {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* High-contrast focus state matching DESIGN.md */
+input:focus {
+  outline: none;
+  border-color: #FFFFFF !important;
+}
