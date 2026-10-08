@@ -15,16 +15,30 @@
     "subtext": "",
     "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex items-center justify-between my-space-xs border border-outline-variant/20\"><div class=\"flex items-center space-x-space-md font-meta-mono text-title-sm text-on-surface\"><span class=\"text-tertiary\">2</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">4</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">8</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">16</span><span class=\"text-primary-container\">→</span><span class=\"text-primary font-bold bg-surface-container-high px-space-sm py-0.5 rounded-DEFAULT\">?</span></div><div class=\"flex items-center space-x-space-xs text-secondary font-meta-mono text-meta-mono\"><span class=\"material-symbols-outlined text-[16px]\">functions</span><span>f(n) = 2ⁿ</span></div></div>",
     "options": [
-      { "key": "A", "text": "24" },
-      { "key": "B", "text": "32" },
-      { "key": "C", "text": "30" },
-      { "key": "D", "text": "36" }
+      {
+        "key": "A",
+        "text": "24"
+      },
+      {
+        "key": "B",
+        "text": "32"
+      },
+      {
+        "key": "C",
+        "text": "30"
+      },
+      {
+        "key": "D",
+        "text": "36"
+      }
     ],
     "correctKey": "B",
     "explanation": "Sequence adheres strictly to an exponential doubling progression f(n) = 2ⁿ. After 16 (2⁴), the target node resolves to 32 (2⁵) across the primary recursion stack.",
     "nextLabel": "NEXT CHALLENGE: TIME STONE",
     "quote": "“Your intellect deconstructs all complexity.”",
-    "citation": "Analytical throughput reached peak structural integrity with zero recursive friction across abstract symbolic logic gates."
+    "citation": "Analytical throughput reached peak structural integrity with zero recursive friction across abstract symbolic logic gates.",
+    "pngPath": "uiux/logostones/mind.png",
+    "svgPath": "uiux/logostones/mind.svg"
   },
   {
     "id": "time",
@@ -42,16 +56,30 @@
     "subtext": "",
     "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-tertiary\">REG::T₀: [A → B → C]</span><span class=\"text-[#10B981]\">──►</span><span class=\"text-primary font-bold\">REG::T₁: [C → B → A]</span></div><div class=\"text-secondary\">[PARITY FLIP DETECTED AT STEP 3]</div></div>",
     "options": [
-      { "key": "A", "text": "Chronological forward shift" },
-      { "key": "B", "text": "Reverse cyclical recurrence" },
-      { "key": "C", "text": "Static index parity" },
-      { "key": "D", "text": "Linear step expansion" }
+      {
+        "key": "A",
+        "text": "Chronological forward shift"
+      },
+      {
+        "key": "B",
+        "text": "Reverse cyclical recurrence"
+      },
+      {
+        "key": "C",
+        "text": "Static index parity"
+      },
+      {
+        "key": "D",
+        "text": "Linear step expansion"
+      }
     ],
     "correctKey": "B",
     "explanation": "Inverted recursion occurred at Step 3 where the sequence flipped parity. The backward stack trace verifies that cycle indexing was decremented rather than incremented across the primary register.",
     "nextLabel": "NEXT CHALLENGE: REALITY STONE",
     "quote": "“You see what others forget.”",
-    "citation": "Cognitive latency indices placed respondent in the 99th percentile for predictive causal deduction across temporal logic gates."
+    "citation": "Cognitive latency indices placed respondent in the 99th percentile for predictive causal deduction across temporal logic gates.",
+    "pngPath": "uiux/logostones/time.png",
+    "svgPath": "uiux/logostones/time.svg"
   },
   {
     "id": "reality",
@@ -69,16 +97,30 @@
     "subtext": "",
     "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-[#EF4444] font-bold\">ANOMALY::ALERT:</span><span class=\"text-secondary\">P(Reality | SensorData) = 0.0001</span></div><div class=\"text-secondary\">[INFERENCE_STATE: SUSPENDED]</div></div>",
     "options": [
-      { "key": "A", "text": "Clamp all divergent inputs to the nearest training centroid" },
-      { "key": "B", "text": "Branch a stochastic latent subspace to model divergent physics" },
-      { "key": "C", "text": "Suppress anomaly logs and purge the perceptual cache" },
-      { "key": "D", "text": "Overwrite historical ground-truth priors with incoming sensor stream" }
+      {
+        "key": "A",
+        "text": "Clamp all divergent inputs to the nearest training centroid"
+      },
+      {
+        "key": "B",
+        "text": "Branch a stochastic latent subspace to model divergent physics"
+      },
+      {
+        "key": "C",
+        "text": "Suppress anomaly logs and purge the perceptual cache"
+      },
+      {
+        "key": "D",
+        "text": "Overwrite historical ground-truth priors with incoming sensor stream"
+      }
     ],
     "correctKey": "B",
     "explanation": "Reality alteration demands latent branching rather than deterministic clamping. Branching stochastic subspaces prevents catastrophic forgetting while assimilating paradoxical anomaly topologies.",
     "nextLabel": "NEXT CHALLENGE: SPACE STONE",
     "quote": "“You bend impossible constraints to your will.”",
-    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility under conflicting non-linear reality states."
+    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility under conflicting non-linear reality states.",
+    "pngPath": "uiux/logostones/reality.png",
+    "svgPath": "uiux/logostones/reality.svg"
   },
   {
     "id": "space",
@@ -96,16 +138,30 @@
     "subtext": "",
     "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-tertiary\">NODE_ORIGIN: (0, 0, 0)</span><span class=\"text-[#3B82F6]\">════►</span><span class=\"text-on-surface font-bold\">NODE_TARGET: (3, 4, 2)</span></div><div class=\"text-secondary\">METRIC: L1 Manhattan Distance = |Δx| + |Δy| + |Δz|</div></div>",
     "options": [
-      { "key": "A", "text": "7 hops" },
-      { "key": "B", "text": "8 hops" },
-      { "key": "C", "text": "9 hops" },
-      { "key": "D", "text": "12 hops" }
+      {
+        "key": "A",
+        "text": "7 hops"
+      },
+      {
+        "key": "B",
+        "text": "8 hops"
+      },
+      {
+        "key": "C",
+        "text": "9 hops"
+      },
+      {
+        "key": "D",
+        "text": "12 hops"
+      }
     ],
     "correctKey": "C",
     "explanation": "In orthogonal L1 grid space, the non-diagonal distance calculates strictly as |3-0| + |4-0| + |2-0| = 3 + 4 + 2 = 9 discrete dimensional steps.",
     "nextLabel": "NEXT CHALLENGE: POWER STONE",
     "quote": "“You navigate multidimensional topology effortlessly.”",
-    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization across high-dimensional tensor space."
+    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization across high-dimensional tensor space.",
+    "pngPath": "uiux/logostones/space.png",
+    "svgPath": "uiux/logostones/space.svg"
   },
   {
     "id": "power",
@@ -125,16 +181,30 @@
     "subtext": "Traverse strictly from Top Row to Bottom Row through orthogonally adjacent memory nodes. Calculate accumulated weight.",
     "snippetHtml": "<div class=\"w-full flex justify-center py-space-sm\"><div class=\"bg-surface-container-lowest rounded-lg p-space-md shadow-2xl flex flex-col space-y-2 border border-outline-variant/20\"><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">14</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim\">29</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">08</div></div><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">42</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim\">19</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">33</div></div><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">05</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-container\">61</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">12</div></div></div></div>",
     "options": [
-      { "key": "A", "text": "Path Alpha: [14 → 42 → 61]" },
-      { "key": "B", "text": "Path Beta: [29 → 42 → 61]" },
-      { "key": "C", "text": "Path Gamma: [29 → 19 → 61]" },
-      { "key": "D", "text": "Path Delta: [08 → 33 → 61]" }
+      {
+        "key": "A",
+        "text": "Path Alpha: [14 → 42 → 61]"
+      },
+      {
+        "key": "B",
+        "text": "Path Beta: [29 → 42 → 61]"
+      },
+      {
+        "key": "C",
+        "text": "Path Gamma: [29 → 19 → 61]"
+      },
+      {
+        "key": "D",
+        "text": "Path Delta: [08 → 33 → 61]"
+      }
     ],
     "correctKey": "B",
     "explanation": "Path Beta [29 + 42 + 61 = 132] resolves the global maximum tensor path. The cognitive speed index verifies rapid convergence within the acute temporal envelope.",
     "nextLabel": "NEXT CHALLENGE: SOUL STONE",
     "quote": "“Raw velocity channeled with unerring precision.”",
-    "citation": "Ultra-low cognitive latency under acute temporal countdown executed decisive maximum-weight tensor paths without cognitive hesitation."
+    "citation": "Ultra-low cognitive latency under acute temporal countdown executed decisive maximum-weight tensor paths without cognitive hesitation.",
+    "pngPath": "uiux/logostones/power.png",
+    "svgPath": "uiux/logostones/power.svg"
   },
   {
     "id": "soul",
@@ -152,15 +222,29 @@
     "subtext": "",
     "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-[#F97316] font-bold\">EQUILIBRIUM_TENSOR:</span><span>[1 CORE SACRIFICE] ◄► [10,000 COLLAPSE]</span></div><div class=\"text-secondary\">IRREVERSIBLE STATE TRANSITION</div></div>",
     "options": [
-      { "key": "A", "text": "Decouple the individual core to guarantee collective continuum survival" },
-      { "key": "B", "text": "Refuse active intervention and distribute decay entropy equally across all nodes" },
-      { "key": "C", "text": "Trigger emergency hard shutdown across all 10,001 active processes" },
-      { "key": "D", "text": "Postpone decision indefinitely awaiting external supervisor quorum" }
+      {
+        "key": "A",
+        "text": "Decouple the individual core to guarantee collective continuum survival"
+      },
+      {
+        "key": "B",
+        "text": "Refuse active intervention and distribute decay entropy equally across all nodes"
+      },
+      {
+        "key": "C",
+        "text": "Trigger emergency hard shutdown across all 10,001 active processes"
+      },
+      {
+        "key": "D",
+        "text": "Postpone decision indefinitely awaiting external supervisor quorum"
+      }
     ],
     "correctKey": "A",
     "explanation": "The Soul Stone demands decisive ethical fortitude. Accepting the burden of purposeful sacrifice to preserve the broader continuum represents the highest intuitive equilibrium.",
     "nextLabel": "FINALIZE EVALUATION & REVEAL STONE",
     "quote": "“You carry the intuitive gravity of true leadership.”",
-    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas with unyielding moral clarity and intuitive focus."
+    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas with unyielding moral clarity and intuitive focus.",
+    "pngPath": "uiux/logostones/soul.png",
+    "svgPath": "uiux/logostones/soul.svg"
   }
 ]

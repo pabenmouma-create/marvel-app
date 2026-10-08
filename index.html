@@ -406,9 +406,15 @@
                     </div>
                     <span id="result-winner-affinity-badge" class="font-meta-mono text-meta-mono px-2 py-0.5 rounded-DEFAULT text-[11px] tracking-wider uppercase font-bold"></span>
                   </div>
-                  <div class="flex flex-col space-y-1">
-                    <span id="result-winner-title" class="font-display-lg text-display-lg text-on-surface tracking-tighter uppercase font-extrabold leading-none"></span>
-                    <span id="result-winner-domain" class="font-meta-mono text-meta-mono text-secondary uppercase tracking-widest text-xs pt-1"></span>
+                  <div class="flex items-center gap-space-md sm:gap-space-lg">
+                    <div id="result-winner-stone-container" class="relative shrink-0 flex items-center justify-center p-2 sm:p-2.5 rounded-xl bg-surface-container-high/60 border border-outline-variant/30 shadow-lg overflow-hidden group">
+                      <div id="result-winner-stone-glow" class="absolute inset-0 opacity-20 blur-md pointer-events-none transition-all duration-700"></div>
+                      <img id="result-winner-stone-img" src="" alt="Awarded Stone" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain relative z-10 stone-glow transition-transform duration-500 hover:scale-105" onerror="if(!this.src.endsWith('.svg')){this.src=this.src.replace('.png','.svg');}" />
+                    </div>
+                    <div class="flex flex-col space-y-1 min-w-0 flex-1">
+                      <span id="result-winner-title" class="font-display-lg text-3xl sm:text-4xl md:text-display-lg text-on-surface tracking-tighter uppercase font-extrabold leading-none"></span>
+                      <span id="result-winner-domain" class="font-meta-mono text-meta-mono text-secondary uppercase tracking-widest text-xs pt-1"></span>
+                    </div>
                   </div>
                   <div class="pt-space-sm">
                     <p id="result-winner-quote" class="font-body-lg text-body-lg text-on-surface italic tracking-normal"></p>

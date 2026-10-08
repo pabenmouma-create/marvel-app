@@ -24,6 +24,7 @@
       colorRing: 'ring-[#EAB308]/20',
       textColor: 'text-[#EAB308]',
       svgPath: 'uiux/logostones/mind.svg',
+      pngPath: 'uiux/logostones/mind.png',
       directive: 'DIRECTIVE: IDENTIFY RECURSION TARGET',
       question: 'Find the next number in the sequence:',
       snippetHtml: `
@@ -69,6 +70,7 @@
       colorRing: 'ring-[#10B981]/20',
       textColor: 'text-[#10B981]',
       svgPath: 'uiux/logostones/time.svg',
+      pngPath: 'uiux/logostones/time.png',
       directive: 'QUERY EVALUATION • TEMPORAL RECONSTRUCTION',
       question: 'Which of the following temporal sequence rules was inverted in Phase 1?',
       snippetHtml: `
@@ -105,6 +107,7 @@
       colorRing: 'ring-[#EF4444]/20',
       textColor: 'text-[#EF4444]',
       svgPath: 'uiux/logostones/reality.svg',
+      pngPath: 'uiux/logostones/reality.png',
       directive: 'DIRECTIVE: PARADOX RESOLUTION & LATERAL BRANCHING',
       question: 'An AI perceptual filter classifies an impossible visual anomaly. Standard inference aborts. Which lateral adaptation restores operational validity without corrupting historical weights?',
       snippetHtml: `
@@ -140,6 +143,7 @@
       colorRing: 'ring-[#3B82F6]/20',
       textColor: 'text-[#3B82F6]',
       svgPath: 'uiux/logostones/space.svg',
+      pngPath: 'uiux/logostones/space.png',
       directive: 'DIRECTIVE: MINIMAL NON-EUCLIDEAN MANHATTAN TRAVERSAL',
       question: 'In a 3D grid matrix with coordinates (x, y, z), what is the minimum hop count to traverse from (0,0,0) to (3,4,2) without diagonal leaps?',
       snippetHtml: `
@@ -176,6 +180,7 @@
       colorRing: 'ring-[#A855F7]/20',
       textColor: 'text-[#A855F7]',
       svgPath: 'uiux/logostones/power.svg',
+      pngPath: 'uiux/logostones/power.png',
       isSpeedChallenge: true,
       timeLimitMs: 12000, // 12 seconds high-stakes countdown
       directive: 'DIRECTIVE IDENTIFIER // M-49 (+150 PTS ACCURACY BONUS)',
@@ -226,6 +231,7 @@
       colorRing: 'ring-[#F97316]/20',
       textColor: 'text-[#F97316]',
       svgPath: 'uiux/logostones/soul.svg',
+      pngPath: 'uiux/logostones/soul.png',
       directive: 'DIRECTIVE: THE EQUILIBRIUM SACRIFICE DILEMMA',
       question: 'A cluster-wide fault will collapse an entire neural network serving 10,000 distributed agent processes unless a single critical core agent is permanently decoupled. What is the soul-resonant protocol?',
       snippetHtml: `
@@ -257,7 +263,15 @@
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          STONES_DATA = data;
+          STONES_DATA = data.map((q) => {
+            const fallback = STONES_DATA.find((s) => s.id === q.id) || {};
+            return {
+              ...fallback,
+              ...q,
+              pngPath: q.pngPath || fallback.pngPath || `uiux/logostones/${q.id || fallback.id}.png`,
+              svgPath: q.svgPath || fallback.svgPath || `uiux/logostones/${q.id || fallback.id}.svg`
+            };
+          });
           console.log('[Kiosk] Loaded questions.json (' + data.length + ' challenges)');
         }
       }
@@ -268,12 +282,12 @@
 
   // Default initial leaderboard cache
   const INITIAL_LEADERBOARD = [
-    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308', svgPath: 'uiux/logostones/mind.svg' },
-    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981', svgPath: 'uiux/logostones/time.svg' },
-    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7', svgPath: 'uiux/logostones/power.svg' },
-    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6', svgPath: 'uiux/logostones/space.svg' },
-    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316', svgPath: 'uiux/logostones/soul.svg' },
-    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444', svgPath: 'uiux/logostones/reality.svg' }
+    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308', svgPath: 'uiux/logostones/mind.svg', pngPath: 'uiux/logostones/mind.png' },
+    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981', svgPath: 'uiux/logostones/time.svg', pngPath: 'uiux/logostones/time.png' },
+    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7', svgPath: 'uiux/logostones/power.svg', pngPath: 'uiux/logostones/power.png' },
+    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6', svgPath: 'uiux/logostones/space.svg', pngPath: 'uiux/logostones/space.png' },
+    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316', svgPath: 'uiux/logostones/soul.svg', pngPath: 'uiux/logostones/soul.png' },
+    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444', svgPath: 'uiux/logostones/reality.svg', pngPath: 'uiux/logostones/reality.png' }
   ];
 
   // ========================================================
@@ -982,6 +996,9 @@
     const resultWinnerCitation = document.getElementById('result-winner-citation');
     const resultContestantStamp = document.getElementById('result-contestant-stamp');
     const resultAffinityRows = document.getElementById('result-affinity-rows');
+    const resultWinnerStoneImg = document.getElementById('result-winner-stone-img');
+    const resultWinnerStoneContainer = document.getElementById('result-winner-stone-container');
+    const resultWinnerStoneGlow = document.getElementById('result-winner-stone-glow');
 
     if (resultSessionId) resultSessionId.textContent = `SESSION #${sessionState.sessionId}`;
     if (resultContestantStamp) {
@@ -989,13 +1006,25 @@
     }
 
     if (resultWinnerPip) {
-      if (winningStone.svgPath) {
-        // Replace pip span with stone SVG image
-        resultWinnerPip.outerHTML = `<img id="result-winner-pip" src="${winningStone.svgPath}" alt="${winningStone.name}" class="w-12 h-12 object-contain shrink-0 stone-glow" />`;
-      } else {
-        resultWinnerPip.style.backgroundColor = winningStone.color;
-        resultWinnerPip.className = `w-3.5 h-3.5 rounded-full inline-block ring-4 ${winningStone.colorRing}`;
-      }
+      resultWinnerPip.style.backgroundColor = winningStone.color;
+      resultWinnerPip.className = `w-3.5 h-3.5 rounded-full inline-block ring-4 ${winningStone.colorRing || 'ring-white/20'}`;
+    }
+
+    // Awarded Stone PNG Artwork aside its name
+    if (resultWinnerStoneImg) {
+      const stonePng = winningStone.pngPath || `uiux/logostones/${winningStone.id}.png`;
+      resultWinnerStoneImg.src = stonePng;
+      resultWinnerStoneImg.alt = winningStone.name;
+      resultWinnerStoneImg.style.setProperty('--winner-glow-color', winningStone.color);
+    }
+
+    if (resultWinnerStoneContainer) {
+      resultWinnerStoneContainer.style.borderColor = `${winningStone.color}44`;
+      resultWinnerStoneContainer.style.boxShadow = `0 0 24px ${winningStone.color}26`;
+    }
+
+    if (resultWinnerStoneGlow) {
+      resultWinnerStoneGlow.style.backgroundColor = winningStone.color;
     }
 
     if (resultWinnerArtifactTag) {
@@ -1033,7 +1062,8 @@
     if (resultAffinityRows) {
       resultAffinityRows.innerHTML = sortedAffinities.map((item, idx) => {
         const isTop = idx === 0;
-        const stoneIcon = item.svgPath ? `<img src="${item.svgPath}" alt="${item.name}" class="w-7 h-7 object-contain shrink-0 ml-1 ${isTop ? 'stone-glow' : ''}" />` : `<span class="w-3 h-3 rounded-full shrink-0 ml-1" style="background-color: ${item.color};"></span>`;
+        const stoneSrc = item.pngPath || item.svgPath;
+        const stoneIcon = stoneSrc ? `<img src="${stoneSrc}" alt="${item.name}" class="w-7 h-7 object-contain shrink-0 ml-1 ${isTop ? 'stone-glow' : ''}" />` : `<span class="w-3 h-3 rounded-full shrink-0 ml-1" style="background-color: ${item.color};"></span>`;
         return `
           <div class="${isTop ? 'bg-surface-container-high ring-1 ring-white/5' : 'bg-surface-container'} px-space-md py-3 rounded-DEFAULT flex items-center justify-between transition-colors hover:bg-surface-container-high/80 group">
             <div class="flex items-center space-x-3 min-w-0 flex-1">
@@ -1078,6 +1108,7 @@
       score: sessionState.totalScore || 900,
       color: winningStone.color,
       svgPath: winningStone.svgPath || '',
+      pngPath: winningStone.pngPath || '',
       isCurrentContestant: true
     };
 
@@ -1111,7 +1142,7 @@
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center space-x-2">
-              ${item.svgPath ? `<img src="${item.svgPath}" alt="${item.stone}" class="w-5 h-5 object-contain shrink-0" />` : `<span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${item.color || '#EAB308'};"></span>`}
+              ${(item.pngPath || item.svgPath) ? `<img src="${item.pngPath || item.svgPath}" alt="${item.stone}" class="w-5 h-5 object-contain shrink-0" />` : `<span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${item.color || '#EAB308'};"></span>`}
               <span class="text-on-surface uppercase text-xs">${item.stone}</span>
             </div>
           </td>
