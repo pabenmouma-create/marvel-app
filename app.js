@@ -23,6 +23,7 @@
       color: '#EAB308',
       colorRing: 'ring-[#EAB308]/20',
       textColor: 'text-[#EAB308]',
+      svgPath: 'uiux/logostones/mind.svg',
       directive: 'DIRECTIVE: IDENTIFY RECURSION TARGET',
       question: 'Find the next number in the sequence:',
       snippetHtml: `
@@ -67,6 +68,7 @@
       color: '#10B981',
       colorRing: 'ring-[#10B981]/20',
       textColor: 'text-[#10B981]',
+      svgPath: 'uiux/logostones/time.svg',
       directive: 'QUERY EVALUATION • TEMPORAL RECONSTRUCTION',
       question: 'Which of the following temporal sequence rules was inverted in Phase 1?',
       snippetHtml: `
@@ -102,6 +104,7 @@
       color: '#EF4444',
       colorRing: 'ring-[#EF4444]/20',
       textColor: 'text-[#EF4444]',
+      svgPath: 'uiux/logostones/reality.svg',
       directive: 'DIRECTIVE: PARADOX RESOLUTION & LATERAL BRANCHING',
       question: 'An AI perceptual filter classifies an impossible visual anomaly. Standard inference aborts. Which lateral adaptation restores operational validity without corrupting historical weights?',
       snippetHtml: `
@@ -136,6 +139,7 @@
       color: '#3B82F6',
       colorRing: 'ring-[#3B82F6]/20',
       textColor: 'text-[#3B82F6]',
+      svgPath: 'uiux/logostones/space.svg',
       directive: 'DIRECTIVE: MINIMAL NON-EUCLIDEAN MANHATTAN TRAVERSAL',
       question: 'In a 3D grid matrix with coordinates (x, y, z), what is the minimum hop count to traverse from (0,0,0) to (3,4,2) without diagonal leaps?',
       snippetHtml: `
@@ -171,6 +175,7 @@
       color: '#A855F7',
       colorRing: 'ring-[#A855F7]/20',
       textColor: 'text-[#A855F7]',
+      svgPath: 'uiux/logostones/power.svg',
       isSpeedChallenge: true,
       timeLimitMs: 12000, // 12 seconds high-stakes countdown
       directive: 'DIRECTIVE IDENTIFIER // M-49 (+150 PTS ACCURACY BONUS)',
@@ -220,6 +225,7 @@
       color: '#F97316',
       colorRing: 'ring-[#F97316]/20',
       textColor: 'text-[#F97316]',
+      svgPath: 'uiux/logostones/soul.svg',
       directive: 'DIRECTIVE: THE EQUILIBRIUM SACRIFICE DILEMMA',
       question: 'A cluster-wide fault will collapse an entire neural network serving 10,000 distributed agent processes unless a single critical core agent is permanently decoupled. What is the soul-resonant protocol?',
       snippetHtml: `
@@ -262,12 +268,12 @@
 
   // Default initial leaderboard cache
   const INITIAL_LEADERBOARD = [
-    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308' },
-    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981' },
-    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7' },
-    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6' },
-    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316' },
-    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444' }
+    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308', svgPath: 'uiux/logostones/mind.svg' },
+    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981', svgPath: 'uiux/logostones/time.svg' },
+    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7', svgPath: 'uiux/logostones/power.svg' },
+    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6', svgPath: 'uiux/logostones/space.svg' },
+    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316', svgPath: 'uiux/logostones/soul.svg' },
+    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444', svgPath: 'uiux/logostones/reality.svg' }
   ];
 
   // ========================================================
@@ -578,7 +584,7 @@
       <div class="w-full flex flex-col gap-space-sm mb-space-lg">
         <div class="w-full flex items-center justify-between">
           <div class="flex items-center space-x-space-sm">
-            <span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: ${stone.color};"></span>
+            ${stone.svgPath ? `<img src="${stone.svgPath}" alt="${stone.name}" class="w-7 h-7 object-contain shrink-0" />` : `<span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: ${stone.color};"></span>`}
             <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface">STONE ${stone.number} / 06</span>
             <span class="text-tertiary-container font-meta-mono text-meta-mono">//</span>
             <span class="font-label-caps text-label-caps uppercase tracking-wider" style="color: ${stone.color};">${stone.name}</span>
@@ -983,8 +989,13 @@
     }
 
     if (resultWinnerPip) {
-      resultWinnerPip.style.backgroundColor = winningStone.color;
-      resultWinnerPip.className = `w-3.5 h-3.5 rounded-full inline-block ring-4 ${winningStone.colorRing}`;
+      if (winningStone.svgPath) {
+        // Replace pip span with stone SVG image
+        resultWinnerPip.outerHTML = `<img id="result-winner-pip" src="${winningStone.svgPath}" alt="${winningStone.name}" class="w-12 h-12 object-contain shrink-0 stone-glow" />`;
+      } else {
+        resultWinnerPip.style.backgroundColor = winningStone.color;
+        resultWinnerPip.className = `w-3.5 h-3.5 rounded-full inline-block ring-4 ${winningStone.colorRing}`;
+      }
     }
 
     if (resultWinnerArtifactTag) {
@@ -1022,21 +1033,27 @@
     if (resultAffinityRows) {
       resultAffinityRows.innerHTML = sortedAffinities.map((item, idx) => {
         const isTop = idx === 0;
+        const stoneIcon = item.svgPath ? `<img src="${item.svgPath}" alt="${item.name}" class="w-7 h-7 object-contain shrink-0 ml-1 ${isTop ? 'stone-glow' : ''}" />` : `<span class="w-3 h-3 rounded-full shrink-0 ml-1" style="background-color: ${item.color};"></span>`;
         return `
-          <div class="${isTop ? 'bg-surface-container-high' : 'bg-surface-container'} px-space-md py-space-sm rounded-DEFAULT flex items-center justify-between transition-colors">
-            <div class="flex items-center space-x-space-sm min-w-0">
-              <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${item.color};"></span>
-              <div class="flex flex-col min-w-0">
+          <div class="${isTop ? 'bg-surface-container-high ring-1 ring-white/5' : 'bg-surface-container'} px-space-md py-3 rounded-DEFAULT flex items-center justify-between transition-colors hover:bg-surface-container-high/80 group">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
+              <div class="flex flex-col min-w-0 flex-1">
                 <div class="flex items-center space-x-2">
-                  <span class="font-title-sm text-title-sm font-bold text-on-surface truncate">${item.name.replace(' STONE', '')}</span>
-                  ${isTop ? `<span class="font-meta-mono text-[9px] text-[#10B981] bg-[#10B981]/10 px-1.5 py-0.2 rounded-DEFAULT tracking-widest">[ HIGHEST RESONANCE ]</span>` : ''}
+                  <span class="font-title-sm text-title-sm font-bold text-on-surface">${item.name.replace(' STONE', '')}</span>
+                  ${isTop ? `<span class="font-meta-mono text-[9px] text-[#10B981] bg-[#10B981]/10 px-1.5 py-0.5 rounded-DEFAULT tracking-widest">[ HIGHEST RESONANCE ]</span>` : ''}
                 </div>
-                <span class="font-meta-mono text-[10px] text-secondary truncate">${item.domain}</span>
+                <span class="font-meta-mono text-[11px] text-on-surface-variant">${item.domain}</span>
               </div>
             </div>
-            <span class="font-meta-mono ${isTop ? 'text-title-sm font-bold' : 'text-body-md'} tabular-nums shrink-0 ml-2" style="color: ${isTop ? item.color : '#c6c6cb'};">
-              ${item.affinity}%
-            </span>
+            <div class="flex items-center space-x-3 shrink-0 ml-3">
+              <div class="hidden sm:block w-20 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full rounded-full transition-all duration-1000 ease-out affinity-bar" style="width: ${item.affinity}%; background-color: ${item.color};"></div>
+              </div>
+              <span class="font-meta-mono ${isTop ? 'text-title-sm font-bold' : 'text-body-md'} tabular-nums" style="color: ${isTop ? item.color : '#e5e2e3'};">
+                ${item.affinity}%
+              </span>
+              ${stoneIcon}
+            </div>
           </div>
         `;
       }).join('');
@@ -1060,6 +1077,7 @@
       affinity: winningStone.affinity,
       score: sessionState.totalScore || 900,
       color: winningStone.color,
+      svgPath: winningStone.svgPath || '',
       isCurrentContestant: true
     };
 
@@ -1093,7 +1111,7 @@
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center space-x-2">
-              <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${item.color || '#EAB308'};"></span>
+              ${item.svgPath ? `<img src="${item.svgPath}" alt="${item.stone}" class="w-5 h-5 object-contain shrink-0" />` : `<span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${item.color || '#EAB308'};"></span>`}
               <span class="text-on-surface uppercase text-xs">${item.stone}</span>
             </div>
           </td>
