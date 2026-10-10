@@ -559,7 +559,7 @@
         <div class="w-full flex items-center justify-between font-meta-mono text-label-caps text-secondary uppercase tracking-widest mb-space-xs">
           <span class="flex items-center space-x-1.5">
             <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
-            <span id="timer-pod-label">OBSERVATION WINDOW • MEMORIZE SLIDE 1</span>
+            <span id="timer-pod-label">OBSERVATION WINDOW • COMPARE SLIDES</span>
           </span>
           <span class="text-on-surface-variant font-meta-mono" id="timer-pod-sublabel">TEMPORAL DRIFT: 10.0 SEC</span>
         </div>
@@ -761,43 +761,19 @@
           e.stopPropagation();
           return;
         }
+        e.preventDefault();
         switchQuizSlide(1);
       });
       slideTabBtns[1].addEventListener('click', (e) => {
-        if (sessionState.isSlide2Locked || window.__isSlide2Locked) {
-          e.preventDefault();
-          e.stopPropagation();
-          return;
-        }
         e.preventDefault();
         switchQuizSlide(2);
       });
     }
   }
 
-  function handleTimerExpiration() {
-    // Ensure timer expiration logic executes strictly once per question
-    if (sessionState.isTimerExpired || sessionState.isSlide1Locked) {
-      return;
-    }
-
-    sessionState.isTimerExpired = true;
-    // Unlock Slide 2 first so switchQuizSlide(2) is not blocked
-    sessionState.isSlide2Locked = false;
-    window.__isSlide2Locked = false;
-    // Then lock Slide 1 permanently
+  function lockSlide1() {
     sessionState.isSlide1Locked = true;
     window.__isSlide1Locked = true;
-
-    // Clear timer interval safely
-    if (sessionState.timerIntervalId) {
-      clearInterval(sessionState.timerIntervalId);
-      sessionState.timerIntervalId = null;
-    }
-    sessionState.timeRemainingMs = 0;
-
-    // Automatically transition to Slide 2
-    switchQuizSlide(2);
 
     // Apply strict visual and interactive lock on Slide 1 tab button
     const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
@@ -810,20 +786,54 @@
         btn1.classList.remove('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high', 'hover:text-on-surface');
         btn1.classList.add('opacity-40', 'cursor-not-allowed', 'pointer-events-none', 'text-secondary/50', 'bg-surface-container');
         btn1.innerHTML = `<span class="flex items-center justify-center space-x-1"><span class="material-symbols-outlined text-[13px]">lock</span><span>SLIDE 1 (LOCKED)</span></span>`;
-        btn1.title = 'Observation window expired. Returning to Slide 1 is permanently locked for this challenge.';
-      }
-      // Restore Slide 2 tab button to active/unlocked visual state
-      if (tabButtons && tabButtons[1]) {
-        tabButtons[1].disabled = false;
-        tabButtons[1].removeAttribute('aria-disabled');
-        tabButtons[1].onclick = null;
-        tabButtons[1].classList.remove('opacity-40', 'cursor-not-allowed', 'pointer-events-none', 'text-secondary/50');
-        tabButtons[1].classList.add('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
-        tabButtons[1].classList.remove('text-secondary', 'bg-surface-container');
-        tabButtons[1].innerHTML = 'SLIDE 2';
-        tabButtons[1].title = '';
+        btn1.title = 'Slide 1 is locked after switching to Slide 2.';
       }
     }
+
+    // If observation timer was running, complete it now that Slide 1 is locked
+    if (sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+      sessionState.isTimerExpired = true;
+      sessionState.timeRemainingMs = 0;
+
+      const timerEl = document.getElementById('countdown-timer');
+      const depletionBar = document.getElementById('depletion-bar');
+      const timerPodLabel = document.getElementById('timer-pod-label');
+      const timerPodSublabel = document.getElementById('timer-pod-sublabel');
+
+      if (timerEl) {
+        timerEl.textContent = '00:00.0';
+        timerEl.classList.remove('text-[#10B981]', 'text-primary-container');
+        timerEl.classList.add('text-secondary');
+      }
+      if (depletionBar) depletionBar.style.width = '0%';
+      if (timerPodLabel) {
+        timerPodLabel.innerHTML = '<span class="flex items-center space-x-1.5"><span class="w-2 h-2 rounded-full bg-error"></span><span>OBSERVATION COMPLETE • SLIDE 1 LOCKED</span></span>';
+      }
+      if (timerPodSublabel) {
+        timerPodSublabel.textContent = 'TRANSITIONED • LOCK ENGAGED';
+      }
+    }
+  }
+
+  function handleTimerExpiration() {
+    // Ensure timer expiration logic executes strictly once per question
+    if (sessionState.isTimerExpired) {
+      return;
+    }
+
+    sessionState.isTimerExpired = true;
+
+    // Clear timer interval safely
+    if (sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+    }
+    sessionState.timeRemainingMs = 0;
+
+    // Transition to Slide 2 which locks Slide 1
+    switchQuizSlide(2);
 
     // Update telemetry timer display to final lock state
     const timerEl = document.getElementById('countdown-timer');
@@ -846,12 +856,8 @@
   }
 
   function switchQuizSlide(slideIndex) {
-    // If Slide 1 is locked because the chrono expired, strictly disallow navigating back to Slide 1
+    // If Slide 1 is locked, disallow navigating back to Slide 1
     if (slideIndex === 1 && (sessionState.isSlide1Locked || window.__isSlide1Locked)) {
-      return;
-    }
-    // If Slide 2 is locked (timer still running), block navigation to Slide 2
-    if (slideIndex === 2 && (sessionState.isSlide2Locked || window.__isSlide2Locked)) {
       return;
     }
 
@@ -883,6 +889,9 @@
         }
         if (slide1) slide1.classList.add('hidden');
         if (slide2) slide2.classList.remove('hidden');
+
+        // As requested: switching to the second slide permanently locks the first slide
+        lockSlide1();
       }
     }
   }
@@ -894,23 +903,21 @@
     sessionState.timeRemainingMs = timeLimitMs;
     sessionState.isTimerExpired = false;
     sessionState.isSlide1Locked = false;
-    // Lock Slide 2 immediately — it must remain inaccessible while the timer runs
-    sessionState.isSlide2Locked = true;
+    sessionState.isSlide2Locked = false;
     window.__isSlide1Locked = false;
-    window.__isSlide2Locked = true;
+    window.__isSlide2Locked = false;
     const interval = 50;
 
-    // Apply visual lock on Slide 2 tab button to signal it is unavailable
+    // Both slides are accessible from the start — ensure both tabs are active and enabled
     const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
     if (tabsContainer) {
       const tabButtons = tabsContainer.querySelectorAll('.slide-tab-btn, button');
-      if (tabButtons && tabButtons[1]) {
-        tabButtons[1].disabled = true;
-        tabButtons[1].setAttribute('aria-disabled', 'true');
-        tabButtons[1].onclick = function() { return false; };
-        tabButtons[1].classList.add('opacity-40', 'cursor-not-allowed', 'pointer-events-none');
-        tabButtons[1].innerHTML = `<span class="flex items-center justify-center space-x-1"><span class="material-symbols-outlined text-[13px]">lock</span><span>SLIDE 2 (LOCKED)</span></span>`;
-        tabButtons[1].title = 'Slide 2 is locked until the observation timer expires.';
+      if (tabButtons && tabButtons.length >= 2) {
+        tabButtons.forEach(btn => {
+          btn.disabled = false;
+          btn.removeAttribute('aria-disabled');
+          btn.classList.remove('opacity-40', 'cursor-not-allowed', 'pointer-events-none');
+        });
       }
     }
 
@@ -934,7 +941,6 @@
         clearInterval(sessionState.timerIntervalId);
         sessionState.timerIntervalId = null;
 
-        // Execute single-run expiration and permanent lock
         handleTimerExpiration();
         return;
       }

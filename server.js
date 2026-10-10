@@ -50,11 +50,13 @@ const server = http.createServer((req, res) => {
       'Last-Modified': lastModified
     };
 
-    // Cache static assets (images, fonts, stylesheets, scripts)
-    if (['.png', '.webp', '.jpg', '.svg', '.ico', '.css', '.js', '.woff2', '.woff'].includes(ext)) {
+    // Cache heavy media assets (images, fonts), but never cache JS, CSS, or JSON application code
+    if (['.png', '.webp', '.jpg', '.svg', '.ico', '.woff2', '.woff'].includes(ext)) {
       headers['Cache-Control'] = 'public, max-age=604800, stale-while-revalidate=86400';
     } else {
-      headers['Cache-Control'] = 'no-cache';
+      headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+      headers['Pragma'] = 'no-cache';
+      headers['Expires'] = '0';
     }
 
     // Check ETag & If-Modified-Since for 304 Not Modified
