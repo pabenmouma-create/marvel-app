@@ -37,6 +37,7 @@
       domain: 'Pattern Recognition & Memory', difficulty: 'MEDIUM', value: 100,
       color: '#10B981', colorRing: 'ring-[#10B981]/20', textColor: 'text-[#10B981]',
       svgPath: 'uiux/logostones/time.png', pngPath: 'uiux/logostones/time.png',
+      hasSlideTimer: true, timeLimitMs: 10000,
       directive: 'TIME STONE — Tests Memory & Observation',
       question: 'The Mysterious Disappearance: Which two characters disappeared in Slide 2?',
       snippetHtml: '',
@@ -97,7 +98,6 @@
       domain: 'Cognitive Speed & Quick Thinking', difficulty: 'VELOCITY-MAX', value: 150,
       color: '#A855F7', colorRing: 'ring-[#A855F7]/20', textColor: 'text-[#A855F7]',
       svgPath: 'uiux/logostones/power.png', pngPath: 'uiux/logostones/power.png',
-      isSpeedChallenge: true, timeLimitMs: 12000,
       directive: 'POWER STONE — Quick Thinking, Short answers.',
       question: 'Doctor Strange examines 14,000,605 possible futures and discovers that only one leads to victory. What can we conclude?',
       snippetHtml: '',
@@ -184,7 +184,8 @@
     questionStartTime: null,
     isAnswerSubmitted: false,
     timerIntervalId: null,
-    timeRemainingMs: 0
+    timeRemainingMs: 0,
+    hasSlideAutoTransitioned: false
   };
 
   let eventLeaderboard = [...INITIAL_LEADERBOARD];
@@ -257,6 +258,12 @@
 
   function switchView(viewName) {
     currentViewName = viewName;
+
+    // Clean up active timer when navigating away from quiz
+    if (viewName !== 'quiz' && sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+    }
 
     // Track active arena view
     if (['home', 'enterName', 'quiz', 'result', 'kioskReset'].includes(viewName)) {
@@ -406,18 +413,22 @@
 
     sessionState.currentStoneIndex = stoneIndex;
     sessionState.isAnswerSubmitted = false;
+    sessionState.hasSlideAutoTransitioned = false;
     sessionState.questionStartTime = Date.now();
     selectedOptionKey = null;
 
-    clearInterval(sessionState.timerIntervalId);
+    if (sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+    }
 
     const stone = STONES_DATA[stoneIndex];
     renderQuizScreen(stone, stoneIndex);
     switchView('quiz');
 
-    // If speed challenge (Power Stone), start live countdown timer
-    if (stone.isSpeedChallenge) {
-      initSpeedChallengeTimer(stone.timeLimitMs);
+    // If Time Stone question with slide timer, start observation countdown timer
+    if (stone.id === 'time' && (stone.hasSlideTimer || stone.timeLimitMs)) {
+      initTimeStoneSlideTimer(stone.timeLimitMs || 10000);
     }
   }
 
@@ -451,24 +462,24 @@
       `;
     }).join('');
 
-    const timerPodHtml = stone.isSpeedChallenge ? `
-      <!-- High-Stakes Tactical Timer Pod -->
-      <div class="w-full bg-surface-container-low rounded-lg p-space-lg flex flex-col items-center justify-center relative shadow-xl overflow-hidden mb-space-lg border border-outline-variant/30">
+    const timerPodHtml = (stone.id === 'time' && (stone.hasSlideTimer || stone.timeLimitMs)) ? `
+      <!-- Time Stone Tactical Observation Countdown Pod -->
+      <div id="quiz-timer-pod" class="w-full bg-surface-container-low rounded-lg p-space-lg flex flex-col items-center justify-center relative shadow-xl overflow-hidden mb-space-lg border border-outline-variant/30">
         <div class="w-full flex items-center justify-between font-meta-mono text-label-caps text-secondary uppercase tracking-widest mb-space-xs">
           <span class="flex items-center space-x-1.5">
-            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-            <span>REMAINING TIME • HIGH-SPEED RAPID MATRIX</span>
+            <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+            <span id="timer-pod-label">OBSERVATION WINDOW • MEMORIZE SLIDE 1</span>
           </span>
-          <span class="text-on-surface-variant">NODE CLOCK: 44.18 kHz</span>
+          <span class="text-on-surface-variant font-meta-mono" id="timer-pod-sublabel">TEMPORAL DRIFT: 10.0 SEC</span>
         </div>
         <!-- Monospace Digital Readout -->
         <div class="flex items-baseline justify-center my-space-xs">
-          <span class="font-timer-display text-timer-display font-bold tracking-tight text-primary-container tabular-nums" id="countdown-timer">00:12.0</span>
+          <span class="font-timer-display text-timer-display font-bold tracking-tight text-[#10B981] tabular-nums" id="countdown-timer">00:10.0</span>
           <span class="font-meta-mono text-meta-mono text-on-surface-variant ml-space-sm uppercase">SEC</span>
         </div>
         <!-- Depletion Line -->
         <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden mt-space-sm">
-          <div class="h-full bg-primary-container w-[100%] transition-all duration-75 ease-linear" id="depletion-bar"></div>
+          <div class="h-full bg-[#10B981] w-[100%] transition-all duration-75 ease-linear" id="depletion-bar"></div>
         </div>
       </div>
     ` : '';
@@ -649,35 +660,98 @@
         submitQuizAnswer(stone, index, selectedOptionKey);
       });
     }
+
+    // Bind slide tab buttons for seamless manual navigation
+    const slideTabBtns = quizDynamicRoot.querySelectorAll('#slide-tabs button, .slide-tab-btn');
+    if (slideTabBtns.length >= 2) {
+      slideTabBtns[0].addEventListener('click', () => switchQuizSlide(1));
+      slideTabBtns[1].addEventListener('click', () => switchQuizSlide(2));
+    }
   }
 
-  function initSpeedChallengeTimer(timeLimitMs) {
+  function switchQuizSlide(slideIndex) {
+    const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
+    const slide1 = quizDynamicRoot.querySelector('.slide-1');
+    const slide2 = quizDynamicRoot.querySelector('.slide-2');
+
+    if (tabsContainer) {
+      const tabButtons = tabsContainer.querySelectorAll('.slide-tab-btn, button');
+      if (slideIndex === 1) {
+        if (tabButtons[0]) {
+          tabButtons[0].classList.add('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
+          tabButtons[0].classList.remove('text-secondary', 'bg-surface-container');
+        }
+        if (tabButtons[1]) {
+          tabButtons[1].classList.remove('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
+          tabButtons[1].classList.add('text-secondary', 'bg-surface-container');
+        }
+        if (slide1) slide1.classList.remove('hidden');
+        if (slide2) slide2.classList.add('hidden');
+      } else if (slideIndex === 2) {
+        if (tabButtons[0]) {
+          tabButtons[0].classList.remove('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
+          tabButtons[0].classList.add('text-secondary', 'bg-surface-container');
+        }
+        if (tabButtons[1]) {
+          tabButtons[1].classList.add('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
+          tabButtons[1].classList.remove('text-secondary', 'bg-surface-container');
+        }
+        if (slide1) slide1.classList.add('hidden');
+        if (slide2) slide2.classList.remove('hidden');
+
+        // Immediately stop and clear observation timer upon revealing Slide 2
+        if (sessionState.timerIntervalId) {
+          clearInterval(sessionState.timerIntervalId);
+          sessionState.timerIntervalId = null;
+        }
+        sessionState.hasSlideAutoTransitioned = true;
+
+        const timerEl = document.getElementById('countdown-timer');
+        const depletionBar = document.getElementById('depletion-bar');
+        const timerPodLabel = document.getElementById('timer-pod-label');
+        const timerPodSublabel = document.getElementById('timer-pod-sublabel');
+        if (timerEl) {
+          timerEl.textContent = '00:00.0';
+          timerEl.classList.remove('text-[#10B981]', 'text-primary-container');
+          timerEl.classList.add('text-secondary');
+        }
+        if (depletionBar) depletionBar.style.width = '0%';
+        if (timerPodLabel) timerPodLabel.textContent = 'OBSERVATION COMPLETE • SLIDE 2 REVEALED';
+        if (timerPodSublabel) timerPodSublabel.textContent = 'LOCK IN YOUR ANSWER';
+      }
+    }
+  }
+  window.__switchQuizSlide = switchQuizSlide;
+
+  function initTimeStoneSlideTimer(timeLimitMs) {
     const timerEl = document.getElementById('countdown-timer');
     const depletionBar = document.getElementById('depletion-bar');
     sessionState.timeRemainingMs = timeLimitMs;
+    sessionState.hasSlideAutoTransitioned = false;
     const interval = 50;
 
+    if (sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+    }
+
     sessionState.timerIntervalId = setInterval(() => {
-      if (sessionState.isAnswerSubmitted) {
+      // Guard: do not run if answer was submitted, slide already transitioned, or view is not quiz
+      if (sessionState.isAnswerSubmitted || sessionState.hasSlideAutoTransitioned || currentViewName !== 'quiz') {
         clearInterval(sessionState.timerIntervalId);
+        sessionState.timerIntervalId = null;
         return;
       }
 
       sessionState.timeRemainingMs -= interval;
 
       if (sessionState.timeRemainingMs <= 0) {
-        clearInterval(sessionState.timerIntervalId);
         sessionState.timeRemainingMs = 0;
-        if (timerEl) {
-          timerEl.textContent = "00:00.0";
-          timerEl.classList.remove('text-primary-container');
-          timerEl.classList.add('text-error');
-        }
-        if (depletionBar) depletionBar.style.width = "0%";
+        clearInterval(sessionState.timerIntervalId);
+        sessionState.timerIntervalId = null;
 
-        // Auto submit if timer expires
-        const currentStone = STONES_DATA[sessionState.currentStoneIndex];
-        submitQuizAnswer(currentStone, sessionState.currentStoneIndex, selectedOptionKey || 'TIMEOUT');
+        // Automatically transition from Slide 1 to Slide 2 exactly once
+        switchQuizSlide(2);
         return;
       }
 
@@ -827,9 +901,21 @@
   // ========================================================
 
   function calculateResults() {
-    // Calculate elemental resonance percentages for each stone
-    // Based on whether the user answered correctly and how fast they answered
-    const results = STONES_DATA.map((stone, idx) => {
+    const stoneOrder = ['mind', 'time', 'reality', 'space', 'power', 'soul'];
+    const stoneResultsMap = {};
+
+    stoneOrder.forEach(id => {
+      const match = STONES_DATA.find(s => s.id === id);
+      if (match) {
+        stoneResultsMap[id] = {
+          ...match,
+          totalScore: 0,
+          questionCount: 0
+        };
+      }
+    });
+
+    STONES_DATA.forEach((stone, idx) => {
       const ans = sessionState.answers[idx];
       let basePercent = 70;
 
@@ -847,9 +933,17 @@
       if (stone.id === 'time' && ans && ans.isCorrect) basePercent = Math.max(basePercent, 94);
       if (stone.id === 'power' && ans && ans.isCorrect && ans.latencyMs < 5000) basePercent = Math.max(basePercent, 91);
 
+      if (stoneResultsMap[stone.id]) {
+        stoneResultsMap[stone.id].totalScore += basePercent;
+        stoneResultsMap[stone.id].questionCount++;
+      }
+    });
+
+    const results = Object.values(stoneResultsMap).map(stone => {
+      const avg = stone.questionCount > 0 ? Math.round(stone.totalScore / stone.questionCount) : 75;
       return {
         ...stone,
-        affinity: Math.min(99, Math.max(50, basePercent))
+        affinity: Math.min(99, Math.max(50, avg))
       };
     });
 
