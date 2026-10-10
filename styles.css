@@ -64,6 +64,15 @@
   user-select: none;
 }
 
+/* Disabled & Locked slide tab */
+.slide-tab-btn:disabled,
+.slide-tab-btn[aria-disabled="true"] {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.45 !important;
+  filter: grayscale(0.6);
+}
+
 /* High-contrast focus state matching DESIGN.md */
 input:focus {
   outline: none;
@@ -402,4 +411,13 @@ img[src*="logostones"] {
 
 img[src*="logostones"]:hover {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+/* --- High-Performance Image Optimization Rules --- */
+img {
+  content-visibility: auto;
+}
+
+img[loading="eager"] {
+  will-change: transform;
 }

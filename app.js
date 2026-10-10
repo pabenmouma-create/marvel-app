@@ -154,11 +154,93 @@
             });
           });
           console.log('[Kiosk] Loaded questions.json (' + data.length + ' challenges)');
+          scheduleInitialAssetWarmup();
         }
       }
     } catch (err) {
       console.warn('[Kiosk] Using fallback stones data:', err);
     }
+  }
+
+  // ========================================================
+  // IMAGE ASSET PRELOADING & CACHE SUBSYSTEM
+  // ========================================================
+  const imagePreloadCache = new Map();
+
+  function preloadSingleImage(url) {
+    if (!url || imagePreloadCache.has(url)) return Promise.resolve(imagePreloadCache.get(url));
+
+    const p = new Promise(resolve => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => {
+        imagePreloadCache.set(url, img);
+        resolve(img);
+      };
+      img.onerror = () => {
+        if (url.endsWith('.webp')) {
+          const fallbackSrc = url.replace(/\.webp$/, '.png');
+          const fb = new Image();
+          fb.onload = () => {
+            imagePreloadCache.set(url, fb);
+            resolve(fb);
+          };
+          fb.onerror = () => resolve(null);
+          fb.src = fallbackSrc;
+        } else {
+          resolve(null);
+        }
+      };
+      img.src = url;
+    });
+
+    imagePreloadCache.set(url, p);
+    return p;
+  }
+
+  function extractImageUrlsFromHtml(html) {
+    if (!html) return [];
+    const urls = [];
+    const regex = /src=["']([^"']+)["']/g;
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+      if (!urls.includes(match[1])) {
+        urls.push(match[1]);
+      }
+    }
+    return urls;
+  }
+
+  function preloadQuestionImages(questionIndex) {
+    if (questionIndex < 0 || questionIndex >= STONES_DATA.length) return;
+    const q = STONES_DATA[questionIndex];
+    if (!q || !q.snippetHtml) return;
+    const urls = extractImageUrlsFromHtml(q.snippetHtml);
+    urls.forEach(url => preloadSingleImage(url));
+  }
+
+  function scheduleInitialAssetWarmup() {
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 150));
+    idle(() => {
+      // Challenge 3 (index 2) is Time Q1 (heroes) - the first challenge with slide imagery
+      preloadQuestionImages(2);
+      setTimeout(() => {
+        preloadQuestionImages(3);
+      }, 500);
+      setTimeout(() => {
+        preloadQuestionImages(4);
+      }, 1000);
+    });
+  }
+
+  function queueUpcomingAssetsPreload(currentIndex) {
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 80));
+    idle(() => {
+      preloadQuestionImages(currentIndex + 1);
+      setTimeout(() => {
+        preloadQuestionImages(currentIndex + 2);
+      }, 250);
+    });
   }
 
     const INITIAL_LEADERBOARD = [
@@ -411,20 +493,29 @@
       return;
     }
 
-    sessionState.currentStoneIndex = stoneIndex;
-    sessionState.isAnswerSubmitted = false;
-    sessionState.hasSlideAutoTransitioned = false;
-    sessionState.questionStartTime = Date.now();
-    selectedOptionKey = null;
-
+    // Always clear any previous timer immediately to prevent cross-question leakage
     if (sessionState.timerIntervalId) {
       clearInterval(sessionState.timerIntervalId);
       sessionState.timerIntervalId = null;
     }
 
+    sessionState.currentStoneIndex = stoneIndex;
+    sessionState.isAnswerSubmitted = false;
+    sessionState.hasSlideAutoTransitioned = false;
+    sessionState.isSlide1Locked = false;
+    sessionState.isSlide2Locked = false;
+    sessionState.isTimerExpired = false;
+    window.__isSlide1Locked = false;
+    window.__isSlide2Locked = false;
+    sessionState.questionStartTime = Date.now();
+    selectedOptionKey = null;
+
     const stone = STONES_DATA[stoneIndex];
     renderQuizScreen(stone, stoneIndex);
     switchView('quiz');
+
+    // Preload upcoming challenge images in the background so slide navigation is instant
+    queueUpcomingAssetsPreload(stoneIndex);
 
     // If Time Stone question with slide timer, start observation countdown timer
     if (stone.id === 'time' && (stone.hasSlideTimer || stone.timeLimitMs)) {
@@ -664,12 +755,106 @@
     // Bind slide tab buttons for seamless manual navigation
     const slideTabBtns = quizDynamicRoot.querySelectorAll('#slide-tabs button, .slide-tab-btn');
     if (slideTabBtns.length >= 2) {
-      slideTabBtns[0].addEventListener('click', () => switchQuizSlide(1));
-      slideTabBtns[1].addEventListener('click', () => switchQuizSlide(2));
+      slideTabBtns[0].addEventListener('click', (e) => {
+        if (sessionState.isSlide1Locked || window.__isSlide1Locked) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        switchQuizSlide(1);
+      });
+      slideTabBtns[1].addEventListener('click', (e) => {
+        if (sessionState.isSlide2Locked || window.__isSlide2Locked) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        e.preventDefault();
+        switchQuizSlide(2);
+      });
+    }
+  }
+
+  function handleTimerExpiration() {
+    // Ensure timer expiration logic executes strictly once per question
+    if (sessionState.isTimerExpired || sessionState.isSlide1Locked) {
+      return;
+    }
+
+    sessionState.isTimerExpired = true;
+    // Unlock Slide 2 first so switchQuizSlide(2) is not blocked
+    sessionState.isSlide2Locked = false;
+    window.__isSlide2Locked = false;
+    // Then lock Slide 1 permanently
+    sessionState.isSlide1Locked = true;
+    window.__isSlide1Locked = true;
+
+    // Clear timer interval safely
+    if (sessionState.timerIntervalId) {
+      clearInterval(sessionState.timerIntervalId);
+      sessionState.timerIntervalId = null;
+    }
+    sessionState.timeRemainingMs = 0;
+
+    // Automatically transition to Slide 2
+    switchQuizSlide(2);
+
+    // Apply strict visual and interactive lock on Slide 1 tab button
+    const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
+    if (tabsContainer) {
+      const tabButtons = tabsContainer.querySelectorAll('.slide-tab-btn, button');
+      if (tabButtons && tabButtons[0]) {
+        const btn1 = tabButtons[0];
+        btn1.disabled = true;
+        btn1.setAttribute('aria-disabled', 'true');
+        btn1.classList.remove('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high', 'hover:text-on-surface');
+        btn1.classList.add('opacity-40', 'cursor-not-allowed', 'pointer-events-none', 'text-secondary/50', 'bg-surface-container');
+        btn1.innerHTML = `<span class="flex items-center justify-center space-x-1"><span class="material-symbols-outlined text-[13px]">lock</span><span>SLIDE 1 (LOCKED)</span></span>`;
+        btn1.title = 'Observation window expired. Returning to Slide 1 is permanently locked for this challenge.';
+      }
+      // Restore Slide 2 tab button to active/unlocked visual state
+      if (tabButtons && tabButtons[1]) {
+        tabButtons[1].disabled = false;
+        tabButtons[1].removeAttribute('aria-disabled');
+        tabButtons[1].onclick = null;
+        tabButtons[1].classList.remove('opacity-40', 'cursor-not-allowed', 'pointer-events-none', 'text-secondary/50');
+        tabButtons[1].classList.add('active-tab', 'text-on-surface', 'border-b-2', 'border-[#10B981]', 'bg-surface-container-high');
+        tabButtons[1].classList.remove('text-secondary', 'bg-surface-container');
+        tabButtons[1].innerHTML = 'SLIDE 2';
+        tabButtons[1].title = '';
+      }
+    }
+
+    // Update telemetry timer display to final lock state
+    const timerEl = document.getElementById('countdown-timer');
+    const depletionBar = document.getElementById('depletion-bar');
+    const timerPodLabel = document.getElementById('timer-pod-label');
+    const timerPodSublabel = document.getElementById('timer-pod-sublabel');
+
+    if (timerEl) {
+      timerEl.textContent = '00:00.0';
+      timerEl.classList.remove('text-[#10B981]', 'text-primary-container');
+      timerEl.classList.add('text-secondary');
+    }
+    if (depletionBar) depletionBar.style.width = '0%';
+    if (timerPodLabel) {
+      timerPodLabel.innerHTML = '<span class="flex items-center space-x-1.5"><span class="w-2 h-2 rounded-full bg-error"></span><span>OBSERVATION COMPLETE • SLIDE 1 LOCKED</span></span>';
+    }
+    if (timerPodSublabel) {
+      timerPodSublabel.textContent = 'TIME EXPIRED • LOCK ENGAGED';
     }
   }
 
   function switchQuizSlide(slideIndex) {
+    // If Slide 1 is locked because the chrono expired, strictly disallow navigating back to Slide 1
+    if (slideIndex === 1 && (sessionState.isSlide1Locked || window.__isSlide1Locked)) {
+      return;
+    }
+    // If Slide 2 is locked (timer still running), block navigation to Slide 2
+    if (slideIndex === 2 && (sessionState.isSlide2Locked || window.__isSlide2Locked)) {
+      return;
+    }
+
     const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
     const slide1 = quizDynamicRoot.querySelector('.slide-1');
     const slide2 = quizDynamicRoot.querySelector('.slide-2');
@@ -698,26 +883,6 @@
         }
         if (slide1) slide1.classList.add('hidden');
         if (slide2) slide2.classList.remove('hidden');
-
-        // Immediately stop and clear observation timer upon revealing Slide 2
-        if (sessionState.timerIntervalId) {
-          clearInterval(sessionState.timerIntervalId);
-          sessionState.timerIntervalId = null;
-        }
-        sessionState.hasSlideAutoTransitioned = true;
-
-        const timerEl = document.getElementById('countdown-timer');
-        const depletionBar = document.getElementById('depletion-bar');
-        const timerPodLabel = document.getElementById('timer-pod-label');
-        const timerPodSublabel = document.getElementById('timer-pod-sublabel');
-        if (timerEl) {
-          timerEl.textContent = '00:00.0';
-          timerEl.classList.remove('text-[#10B981]', 'text-primary-container');
-          timerEl.classList.add('text-secondary');
-        }
-        if (depletionBar) depletionBar.style.width = '0%';
-        if (timerPodLabel) timerPodLabel.textContent = 'OBSERVATION COMPLETE • SLIDE 2 REVEALED';
-        if (timerPodSublabel) timerPodSublabel.textContent = 'LOCK IN YOUR ANSWER';
       }
     }
   }
@@ -727,8 +892,27 @@
     const timerEl = document.getElementById('countdown-timer');
     const depletionBar = document.getElementById('depletion-bar');
     sessionState.timeRemainingMs = timeLimitMs;
-    sessionState.hasSlideAutoTransitioned = false;
+    sessionState.isTimerExpired = false;
+    sessionState.isSlide1Locked = false;
+    // Lock Slide 2 immediately — it must remain inaccessible while the timer runs
+    sessionState.isSlide2Locked = true;
+    window.__isSlide1Locked = false;
+    window.__isSlide2Locked = true;
     const interval = 50;
+
+    // Apply visual lock on Slide 2 tab button to signal it is unavailable
+    const tabsContainer = quizDynamicRoot.querySelector('#slide-tabs');
+    if (tabsContainer) {
+      const tabButtons = tabsContainer.querySelectorAll('.slide-tab-btn, button');
+      if (tabButtons && tabButtons[1]) {
+        tabButtons[1].disabled = true;
+        tabButtons[1].setAttribute('aria-disabled', 'true');
+        tabButtons[1].onclick = function() { return false; };
+        tabButtons[1].classList.add('opacity-40', 'cursor-not-allowed', 'pointer-events-none');
+        tabButtons[1].innerHTML = `<span class="flex items-center justify-center space-x-1"><span class="material-symbols-outlined text-[13px]">lock</span><span>SLIDE 2 (LOCKED)</span></span>`;
+        tabButtons[1].title = 'Slide 2 is locked until the observation timer expires.';
+      }
+    }
 
     if (sessionState.timerIntervalId) {
       clearInterval(sessionState.timerIntervalId);
@@ -736,8 +920,8 @@
     }
 
     sessionState.timerIntervalId = setInterval(() => {
-      // Guard: do not run if answer was submitted, slide already transitioned, or view is not quiz
-      if (sessionState.isAnswerSubmitted || sessionState.hasSlideAutoTransitioned || currentViewName !== 'quiz') {
+      // Guard: do not run if answer was submitted or view is not quiz
+      if (sessionState.isAnswerSubmitted || currentViewName !== 'quiz') {
         clearInterval(sessionState.timerIntervalId);
         sessionState.timerIntervalId = null;
         return;
@@ -750,8 +934,8 @@
         clearInterval(sessionState.timerIntervalId);
         sessionState.timerIntervalId = null;
 
-        // Automatically transition from Slide 1 to Slide 2 exactly once
-        switchQuizSlide(2);
+        // Execute single-run expiration and permanent lock
+        handleTimerExpiration();
         return;
       }
 
@@ -1403,6 +1587,13 @@
   // ========================================================
 
   async function initApp() {
+    // Global image error handler to seamlessly fallback to PNG if WebP fails
+    window.addEventListener('error', (e) => {
+      if (e.target && e.target.tagName === 'IMG' && e.target.src && e.target.src.endsWith('.webp')) {
+        e.target.src = e.target.src.replace(/\.webp$/, '.png');
+      }
+    }, true);
+
     await loadQuestions();
     renderStandingsTable();
     setupEventListeners();

@@ -11,9 +11,12 @@ const MIME_TYPES = {
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json',
   '.png': 'image/png',
+  '.webp': 'image/webp',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.woff2': 'font/woff2',
+  '.woff': 'font/woff'
 };
 
 const server = http.createServer((req, res) => {
@@ -38,8 +41,30 @@ const server = http.createServer((req, res) => {
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const etag = `"${stats.size}-${stats.mtimeMs}"`;
+    const lastModified = stats.mtime.toUTCString();
 
-    res.writeHead(200, { 'Content-Type': contentType });
+    const headers = {
+      'Content-Type': contentType,
+      'ETag': etag,
+      'Last-Modified': lastModified
+    };
+
+    // Cache static assets (images, fonts, stylesheets, scripts)
+    if (['.png', '.webp', '.jpg', '.svg', '.ico', '.css', '.js', '.woff2', '.woff'].includes(ext)) {
+      headers['Cache-Control'] = 'public, max-age=604800, stale-while-revalidate=86400';
+    } else {
+      headers['Cache-Control'] = 'no-cache';
+    }
+
+    // Check ETag & If-Modified-Since for 304 Not Modified
+    if (req.headers['if-none-match'] === etag || req.headers['if-modified-since'] === lastModified) {
+      res.writeHead(304, headers);
+      res.end();
+      return;
+    }
+
+    res.writeHead(200, headers);
     fs.createReadStream(filePath).pipe(res);
   });
 });
