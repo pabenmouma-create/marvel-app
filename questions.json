@@ -4,247 +4,653 @@
     "number": "01",
     "name": "MIND STONE",
     "domain": "Logic & Deductive Reasoning",
-    "moduleTag": "MODULE 01 • LOGIC & PATTERN DECONSTRUCTION",
-    "difficulty": "ALPHA-1",
+    "difficulty": "EASY",
     "value": 100,
-    "color": "#EAB308",
-    "colorRing": "ring-[#EAB308]/20",
-    "textColor": "text-[#EAB308]",
-    "directive": "DIRECTIVE: IDENTIFY RECURSION TARGET",
-    "question": "Find the next number in the sequence:",
-    "subtext": "",
-    "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex items-center justify-between my-space-xs border border-outline-variant/20\"><div class=\"flex items-center space-x-space-md font-meta-mono text-title-sm text-on-surface\"><span class=\"text-tertiary\">2</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">4</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">8</span><span class=\"text-primary-container\">→</span><span class=\"text-tertiary\">16</span><span class=\"text-primary-container\">→</span><span class=\"text-primary font-bold bg-surface-container-high px-space-sm py-0.5 rounded-DEFAULT\">?</span></div><div class=\"flex items-center space-x-space-xs text-secondary font-meta-mono text-meta-mono\"><span class=\"material-symbols-outlined text-[16px]\">functions</span><span>f(n) = 2ⁿ</span></div></div>",
+    "directive": "QUESTION 1",
+    "question": "Guess Who? I can fly, but I have no wings. I have a glowing heart, but it is made of metal. I'm a genius who built a powerful suit to save the world. Who am I?",
     "options": [
       {
         "key": "A",
-        "text": "24"
+        "text": "Thor — unemployed without his hammer."
       },
       {
         "key": "B",
-        "text": "32"
+        "text": "Spider-Man / Peter Parker — saving the world while failing to save his sleep schedule."
       },
       {
         "key": "C",
-        "text": "30"
+        "text": "Batman — wrong universe, bro."
       },
       {
         "key": "D",
-        "text": "36"
+        "text": "Iron Man / Tony Stark — the billionaire who made therapy everyone else's problem."
       }
     ],
-    "correctKey": "B",
-    "explanation": "Sequence adheres strictly to an exponential doubling progression f(n) = 2ⁿ. After 16 (2⁴), the target node resolves to 32 (2⁵) across the primary recursion stack.",
-    "nextLabel": "NEXT CHALLENGE: TIME STONE",
+    "correctKey": "D",
+    "explanation": "It's Tony Stark.",
+    "nextLabel": "NEXT",
     "quote": "“Your intellect deconstructs all complexity.”",
-    "citation": "Analytical throughput reached peak structural integrity with zero recursive friction across abstract symbolic logic gates.",
+    "citation": "Analytical throughput reached peak structural integrity.",
+    "snippetHtml": "",
     "pngPath": "uiux/logostones/mind.png",
-    "svgPath": "uiux/logostones/mind.svg"
+    "svgPath": "uiux/logostones/mind.png"
   },
   {
-    "id": "time",
+    "id": "mind",
     "number": "02",
-    "name": "TIME STONE",
-    "domain": "Pattern Recognition & Memory",
-    "moduleTag": "MODULE 02_ALPHA / STEP 03 RECURSION",
-    "difficulty": "ALPHA-2",
+    "name": "MIND STONE",
+    "domain": "Logic & Deductive Reasoning",
+    "difficulty": "MEDIUM",
     "value": 100,
-    "color": "#10B981",
-    "colorRing": "ring-[#10B981]/20",
-    "textColor": "text-[#10B981]",
-    "directive": "QUERY EVALUATION • TEMPORAL RECONSTRUCTION",
-    "question": "Which of the following temporal sequence rules was inverted in Phase 1?",
-    "subtext": "",
-    "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-tertiary\">REG::T₀: [A → B → C]</span><span class=\"text-[#10B981]\">──►</span><span class=\"text-primary font-bold\">REG::T₁: [C → B → A]</span></div><div class=\"text-secondary\">[PARITY FLIP DETECTED AT STEP 3]</div></div>",
+    "directive": "QUESTION 2",
+    "question": "The Missing Code: The Avengers use a four-digit security code. Tony remembers that:\nThe first digit is 2.\nThe second digit is double the first.\nThe third digit is the sum of the first two.\nThe fourth digit is the difference between the third and second.\nWhat is the code?",
     "options": [
       {
         "key": "A",
-        "text": "Chronological forward shift"
+        "text": "2462 — Tony calculated it while making coffee."
       },
       {
         "key": "B",
-        "text": "Reverse cyclical recurrence"
+        "text": "4682 — Bruce did the calculations after Tony gave up."
       },
       {
         "key": "C",
-        "text": "Static index parity"
+        "text": "2464 — Steve insists that the extra two is a strategic decision."
       },
       {
         "key": "D",
-        "text": "Linear step expansion"
-      }
-    ],
-    "correctKey": "B",
-    "explanation": "Inverted recursion occurred at Step 3 where the sequence flipped parity. The backward stack trace verifies that cycle indexing was decremented rather than incremented across the primary register.",
-    "nextLabel": "NEXT CHALLENGE: REALITY STONE",
-    "quote": "“You see what others forget.”",
-    "citation": "Cognitive latency indices placed respondent in the 99th percentile for predictive causal deduction across temporal logic gates.",
-    "pngPath": "uiux/logostones/time.png",
-    "svgPath": "uiux/logostones/time.svg"
-  },
-  {
-    "id": "reality",
-    "number": "03",
-    "name": "REALITY STONE",
-    "domain": "Lateral Thinking & Creativity",
-    "moduleTag": "MODULE 03 • PERCEPTION & HEURISTIC PARADOX",
-    "difficulty": "BETA-1",
-    "value": 100,
-    "color": "#EF4444",
-    "colorRing": "ring-[#EF4444]/20",
-    "textColor": "text-[#EF4444]",
-    "directive": "DIRECTIVE: PARADOX RESOLUTION & LATERAL BRANCHING",
-    "question": "An AI perceptual filter classifies an impossible visual anomaly. Standard inference aborts. Which lateral adaptation restores operational validity without corrupting historical weights?",
-    "subtext": "",
-    "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-[#EF4444] font-bold\">ANOMALY::ALERT:</span><span class=\"text-secondary\">P(Reality | SensorData) = 0.0001</span></div><div class=\"text-secondary\">[INFERENCE_STATE: SUSPENDED]</div></div>",
-    "options": [
-      {
-        "key": "A",
-        "text": "Clamp all divergent inputs to the nearest training centroid"
-      },
-      {
-        "key": "B",
-        "text": "Branch a stochastic latent subspace to model divergent physics"
-      },
-      {
-        "key": "C",
-        "text": "Suppress anomaly logs and purge the perceptual cache"
-      },
-      {
-        "key": "D",
-        "text": "Overwrite historical ground-truth priors with incoming sensor stream"
-      }
-    ],
-    "correctKey": "B",
-    "explanation": "Reality alteration demands latent branching rather than deterministic clamping. Branching stochastic subspaces prevents catastrophic forgetting while assimilating paradoxical anomaly topologies.",
-    "nextLabel": "NEXT CHALLENGE: SPACE STONE",
-    "quote": "“You bend impossible constraints to your will.”",
-    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility under conflicting non-linear reality states.",
-    "pngPath": "uiux/logostones/reality.png",
-    "svgPath": "uiux/logostones/reality.svg"
-  },
-  {
-    "id": "space",
-    "number": "04",
-    "name": "SPACE STONE",
-    "domain": "Spatial Logic & Strategy",
-    "moduleTag": "MODULE 04 • TOPOLOGICAL ROUTING & GRAPH GEOMETRY",
-    "difficulty": "BETA-2",
-    "value": 100,
-    "color": "#3B82F6",
-    "colorRing": "ring-[#3B82F6]/20",
-    "textColor": "#3B82F6",
-    "directive": "DIRECTIVE: MINIMAL NON-EUCLIDEAN MANHATTAN TRAVERSAL",
-    "question": "In a 3D grid matrix with coordinates (x, y, z), what is the minimum hop count to traverse from (0,0,0) to (3,4,2) without diagonal leaps?",
-    "subtext": "",
-    "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-tertiary\">NODE_ORIGIN: (0, 0, 0)</span><span class=\"text-[#3B82F6]\">════►</span><span class=\"text-on-surface font-bold\">NODE_TARGET: (3, 4, 2)</span></div><div class=\"text-secondary\">METRIC: L1 Manhattan Distance = |Δx| + |Δy| + |Δz|</div></div>",
-    "options": [
-      {
-        "key": "A",
-        "text": "7 hops"
-      },
-      {
-        "key": "B",
-        "text": "8 hops"
-      },
-      {
-        "key": "C",
-        "text": "9 hops"
-      },
-      {
-        "key": "D",
-        "text": "12 hops"
-      }
-    ],
-    "correctKey": "C",
-    "explanation": "In orthogonal L1 grid space, the non-diagonal distance calculates strictly as |3-0| + |4-0| + |2-0| = 3 + 4 + 2 = 9 discrete dimensional steps.",
-    "nextLabel": "NEXT CHALLENGE: POWER STONE",
-    "quote": "“You navigate multidimensional topology effortlessly.”",
-    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization across high-dimensional tensor space.",
-    "pngPath": "uiux/logostones/space.png",
-    "svgPath": "uiux/logostones/space.svg"
-  },
-  {
-    "id": "power",
-    "number": "05",
-    "name": "POWER STONE",
-    "domain": "Cognitive Speed & High-Stakes Focus",
-    "moduleTag": "MODULE 05 // HIGH-STAKES SPEED MATRIX",
-    "difficulty": "VELOCITY-MAX",
-    "value": 150,
-    "color": "#A855F7",
-    "colorRing": "ring-[#A855F7]/20",
-    "textColor": "text-[#A855F7]",
-    "isSpeedChallenge": true,
-    "timeLimitMs": 12000,
-    "directive": "DIRECTIVE IDENTIFIER // M-49 (+150 PTS ACCURACY BONUS)",
-    "question": "Resolve the highest sum path before time expires:",
-    "subtext": "Traverse strictly from Top Row to Bottom Row through orthogonally adjacent memory nodes. Calculate accumulated weight.",
-    "snippetHtml": "<div class=\"w-full flex justify-center py-space-sm\"><div class=\"bg-surface-container-lowest rounded-lg p-space-md shadow-2xl flex flex-col space-y-2 border border-outline-variant/20\"><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">14</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim\">29</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">08</div></div><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">42</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim\">19</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">33</div></div><div class=\"flex items-center space-x-2\"><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">05</div><div class=\"w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-container\">61</div><div class=\"w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface\">12</div></div></div></div>",
-    "options": [
-      {
-        "key": "A",
-        "text": "Path Alpha: [14 → 42 → 61]"
-      },
-      {
-        "key": "B",
-        "text": "Path Beta: [29 → 42 → 61]"
-      },
-      {
-        "key": "C",
-        "text": "Path Gamma: [29 → 19 → 61]"
-      },
-      {
-        "key": "D",
-        "text": "Path Delta: [08 → 33 → 61]"
-      }
-    ],
-    "correctKey": "B",
-    "explanation": "Path Beta [29 + 42 + 61 = 132] resolves the global maximum tensor path. The cognitive speed index verifies rapid convergence within the acute temporal envelope.",
-    "nextLabel": "NEXT CHALLENGE: SOUL STONE",
-    "quote": "“Raw velocity channeled with unerring precision.”",
-    "citation": "Ultra-low cognitive latency under acute temporal countdown executed decisive maximum-weight tensor paths without cognitive hesitation.",
-    "pngPath": "uiux/logostones/power.png",
-    "svgPath": "uiux/logostones/power.svg"
-  },
-  {
-    "id": "soul",
-    "number": "06",
-    "name": "SOUL STONE",
-    "domain": "Intuition & Moral Decision-Making",
-    "moduleTag": "MODULE 06 • ETHICAL HEURISTICS & INTUITIVE SYNTHESIS",
-    "difficulty": "OMEGA-1",
-    "value": 100,
-    "color": "#F97316",
-    "colorRing": "ring-[#F97316]/20",
-    "textColor": "text-[#F97316]",
-    "directive": "DIRECTIVE: THE EQUILIBRIUM SACRIFICE DILEMMA",
-    "question": "A cluster-wide fault will collapse an entire neural network serving 10,000 distributed agent processes unless a single critical core agent is permanently decoupled. What is the soul-resonant protocol?",
-    "subtext": "",
-    "snippetHtml": "<div class=\"bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs\"><div class=\"flex items-center space-x-2 text-on-surface\"><span class=\"text-[#F97316] font-bold\">EQUILIBRIUM_TENSOR:</span><span>[1 CORE SACRIFICE] ◄► [10,000 COLLAPSE]</span></div><div class=\"text-secondary\">IRREVERSIBLE STATE TRANSITION</div></div>",
-    "options": [
-      {
-        "key": "A",
-        "text": "Decouple the individual core to guarantee collective continuum survival"
-      },
-      {
-        "key": "B",
-        "text": "Refuse active intervention and distribute decay entropy equally across all nodes"
-      },
-      {
-        "key": "C",
-        "text": "Trigger emergency hard shutdown across all 10,001 active processes"
-      },
-      {
-        "key": "D",
-        "text": "Postpone decision indefinitely awaiting external supervisor quorum"
+        "text": "2482 — Loki changed one digit just to cause problems."
       }
     ],
     "correctKey": "A",
-    "explanation": "The Soul Stone demands decisive ethical fortitude. Accepting the burden of purposeful sacrifice to preserve the broader continuum represents the highest intuitive equilibrium.",
+    "explanation": "2, then 4, then 6, then (6-4)=2. So 2462.",
+    "nextLabel": "NEXT",
+    "quote": "“Your intellect deconstructs all complexity.”",
+    "citation": "Analytical throughput reached peak structural integrity.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/mind.png",
+    "svgPath": "uiux/logostones/mind.png"
+  },
+  {
+    "id": "mind",
+    "number": "03",
+    "name": "MIND STONE",
+    "domain": "Logic & Deductive Reasoning",
+    "difficulty": "HARD",
+    "value": 100,
+    "directive": "QUESTION 3",
+    "question": "The Sequence: What is the correct order of passing the information?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tony → Bruce → Natasha → Steve"
+      },
+      {
+        "key": "B",
+        "text": "Natasha → Bruce → Tony → Steve"
+      },
+      {
+        "key": "C",
+        "text": "Steve → Tony → Bruce → Natasha"
+      },
+      {
+        "key": "D",
+        "text": "Bruce → Natasha → Steve → Tony"
+      }
+    ],
+    "correctKey": "B",
+    "explanation": "Correct answer provided in the answer key.",
+    "nextLabel": "NEXT",
+    "quote": "“Your intellect deconstructs all complexity.”",
+    "citation": "Analytical throughput reached peak structural integrity.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/mind.png",
+    "svgPath": "uiux/logostones/mind.png"
+  },
+  {
+    "id": "time",
+    "number": "04",
+    "name": "TIME STONE",
+    "domain": "Pattern Recognition & Memory",
+    "difficulty": "EASY",
+    "value": 100,
+    "directive": "QUESTION 1",
+    "question": "The Mysterious Disappearance: Which two characters disappeared in Slide 2?",
+    "snippetHtml": "<div class=\"w-full rounded-lg overflow-hidden border border-outline-variant/30 mt-2\">\n  <div id=\"slide-tabs\" class=\"flex border-b border-outline-variant/30\">\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.remove('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.add('hidden');\" class=\"active-tab flex-1 py-2 font-meta-mono text-xs text-on-surface border-b-2 border-[#10B981] bg-surface-container-high\">SLIDE 1</button>\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.add('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.remove('hidden');\" class=\"flex-1 py-2 font-meta-mono text-xs text-secondary bg-surface-container\">SLIDE 2</button>\n  </div>\n  <div class=\"slide-1 bg-surface-container\"><div class=\"grid grid-cols-4 gap-3 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/spiderman.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/ironman.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/cyclops.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/ironman.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/dr doom.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/dr strange.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/luki.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/vision.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n</div></div>\n  <div class=\"slide-2 bg-surface-container hidden\"><div class=\"grid grid-cols-4 gap-3 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/ironman.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/cyclops.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/ironman.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/dr doom.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/dr strange.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/heros/vision.png\" class=\"w-16 h-20 object-cover rounded border border-outline-variant/40 shadow-md\"/></div>\n</div></div>\n</div>",
+    "options": [
+      {
+        "key": "A",
+        "text": "Spider-Man and Loki — two legends vanished without saying goodbye."
+      },
+      {
+        "key": "B",
+        "text": "Iron Man and Cyclops — the genius and the team leader are missing."
+      },
+      {
+        "key": "C",
+        "text": "Doctor Doom and Vision — one planned the chaos, the other saw it coming."
+      },
+      {
+        "key": "D",
+        "text": "Doctor Strange and Vision — one opened a portal, the other disappeared into it."
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "Spider-Man and Luki disappeared.",
+    "nextLabel": "NEXT",
+    "quote": "“You see what others forget.”",
+    "citation": "Cognitive latency indices placed respondent in the 99th percentile.",
+    "pngPath": "uiux/logostones/time.png",
+    "svgPath": "uiux/logostones/time.png"
+  },
+  {
+    "id": "time",
+    "number": "05",
+    "name": "TIME STONE",
+    "domain": "Pattern Recognition & Memory",
+    "difficulty": "MEDIUM",
+    "value": 100,
+    "directive": "QUESTION 2",
+    "question": "The Mystery Artifact: Which artifact disappears in Slide 2 and gets replaced by the School of AI logo?",
+    "snippetHtml": "<div class=\"w-full rounded-lg overflow-hidden border border-outline-variant/30 mt-2\">\n  <div id=\"slide-tabs\" class=\"flex border-b border-outline-variant/30\">\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.remove('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.add('hidden');\" class=\"active-tab flex-1 py-2 font-meta-mono text-xs text-on-surface border-b-2 border-[#10B981] bg-surface-container-high\">SLIDE 1</button>\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.add('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.remove('hidden');\" class=\"flex-1 py-2 font-meta-mono text-xs text-secondary bg-surface-container\">SLIDE 2</button>\n  </div>\n  <div class=\"slide-1 bg-surface-container\"><div class=\"flex flex-wrap justify-center gap-6 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/shield.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/hammer.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/tesseract.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/arcreactor.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/gauntlet.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n</div></div>\n  <div class=\"slide-2 bg-surface-container hidden\"><div class=\"flex flex-wrap justify-center gap-6 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/shield.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/hammer.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/tesseract.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/more assets/arcreactor.com.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logo soai.png\" class=\"w-20 h-20 object-contain drop-shadow-lg\"/></div>\n</div></div>\n</div>",
+    "options": [
+      {
+        "key": "A",
+        "text": "Thor’s Hammer (Thor tried to register for a project, but the group was full.)"
+      },
+      {
+        "key": "B",
+        "text": "The Tesseract (Currently busy powering our local LLM. Please do not unplug.)"
+      },
+      {
+        "key": "C",
+        "text": "The Infinity Gauntlet — (Because why keep it on screen when you can come take a selfie with the real one we built at our stand?)"
+      },
+      {
+        "key": "D",
+        "text": "Captain America’s Shield (Vibranium is currently out of stock. Try again next semester.)"
+      }
+    ],
+    "correctKey": "C",
+    "explanation": "The Infinity Gauntlet was replaced by the Soai logo.",
+    "nextLabel": "NEXT",
+    "quote": "“You see what others forget.”",
+    "citation": "Cognitive latency indices placed respondent in the 99th percentile.",
+    "pngPath": "uiux/logostones/time.png",
+    "svgPath": "uiux/logostones/time.png"
+  },
+  {
+    "id": "time",
+    "number": "06",
+    "name": "TIME STONE",
+    "domain": "Pattern Recognition & Memory",
+    "difficulty": "HARD",
+    "value": 100,
+    "directive": "QUESTION 3",
+    "question": "Spot the Color Glitch: Which change occurred in Slide 2?",
+    "snippetHtml": "<div class=\"w-full rounded-lg overflow-hidden border border-outline-variant/30 mt-2\">\n  <div id=\"slide-tabs\" class=\"flex border-b border-outline-variant/30\">\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.remove('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.add('hidden');\" class=\"active-tab flex-1 py-2 font-meta-mono text-xs text-on-surface border-b-2 border-[#10B981] bg-surface-container-high\">SLIDE 1</button>\n    <button onclick=\"this.parentElement.querySelector('.active-tab').classList.remove('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.classList.add('active-tab','text-on-surface','border-b-2','border-[#10B981]'); this.closest('.w-full').querySelector('.slide-1').classList.add('hidden'); this.closest('.w-full').querySelector('.slide-2').classList.remove('hidden');\" class=\"flex-1 py-2 font-meta-mono text-xs text-secondary bg-surface-container\">SLIDE 2</button>\n  </div>\n  <div class=\"slide-1 bg-surface-container\"><div class=\"flex flex-wrap justify-center gap-6 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/mind.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/time.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/reality.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/space.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/power.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/soul.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n</div></div>\n  <div class=\"slide-2 bg-surface-container hidden\"><div class=\"flex flex-wrap justify-center gap-6 p-3\">\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/mind.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\" ><img src=\"uiux/logostones/power.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/reality.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/space.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/power.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n  <div class=\"flex flex-col items-center gap-1\"><img src=\"uiux/logostones/soul.png\" class=\"w-14 h-14 object-contain drop-shadow-lg\"/></div>\n</div></div>\n</div>",
+    "options": [
+      {
+        "key": "A",
+        "text": "The space stone became reality."
+      },
+      {
+        "key": "B",
+        "text": "The mind stone became soul."
+      },
+      {
+        "key": "C",
+        "text": "The reality stone became time."
+      },
+      {
+        "key": "D",
+        "text": "The time stone became power."
+      }
+    ],
+    "correctKey": "D",
+    "explanation": "The Time Stone became power.",
+    "nextLabel": "NEXT",
+    "quote": "“You see what others forget.”",
+    "citation": "Cognitive latency indices placed respondent in the 99th percentile.",
+    "pngPath": "uiux/logostones/time.png",
+    "svgPath": "uiux/logostones/time.png"
+  },
+  {
+    "id": "reality",
+    "number": "07",
+    "name": "REALITY STONE",
+    "domain": "Lateral Thinking & Creativity",
+    "difficulty": "EASY",
+    "value": 100,
+    "directive": "QUESTION 1",
+    "question": "Thanos in Customer Service: Thanos works in customer service. An angry customer calls because their order never arrived. What is the most appropriate response?",
+    "options": [
+      {
+        "key": "A",
+        "text": "\"I'm sorry for the inconvenience. Let me check your order and help resolve this.\""
+      },
+      {
+        "key": "B",
+        "text": "\"Sir, please calm down before I remove half of your family.\""
+      },
+      {
+        "key": "C",
+        "text": "\"Have you tried turning the universe off and on again?\""
+      },
+      {
+        "key": "D",
+        "text": "\"Your complaint has been received. Half of our team is now unavailable.\""
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "A is the most appropriate response.",
+    "nextLabel": "NEXT",
+    "quote": "“You bend impossible constraints to your will.”",
+    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/reality.png",
+    "svgPath": "uiux/logostones/reality.png"
+  },
+  {
+    "id": "reality",
+    "number": "08",
+    "name": "REALITY STONE",
+    "domain": "Lateral Thinking & Creativity",
+    "difficulty": "MEDIUM",
+    "value": 100,
+    "directive": "QUESTION 2",
+    "question": "Iron Man on a Student Budget: Tony Stark loses his fortune and has to choose one invention to help students during exam season. Which invention directly solves the problem of forgetting deadlines?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A laptop charger that only works at one very specific angle."
+      },
+      {
+        "key": "B",
+        "text": "A Wi-Fi router that attacks anyone who disconnects it during an exam."
+      },
+      {
+        "key": "C",
+        "text": "A laptop that survives an entire Alsds TP session without overheating enough to cook dinner."
+      },
+      {
+        "key": "D",
+        "text": "A smart assistant that tracks deadlines and sends reminders before assignments are due."
+      }
+    ],
+    "correctKey": "D",
+    "explanation": "D directly solves forgetting deadlines.",
+    "nextLabel": "NEXT",
+    "quote": "“You bend impossible constraints to your will.”",
+    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/reality.png",
+    "svgPath": "uiux/logostones/reality.png"
+  },
+  {
+    "id": "reality",
+    "number": "09",
+    "name": "REALITY STONE",
+    "domain": "Lateral Thinking & Creativity",
+    "difficulty": "HARD",
+    "value": 100,
+    "directive": "QUESTION 3",
+    "question": "Group Work Crisis: You are assigned a group project and everyone is arguing about what to do. What is the best solution?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Do nothing and hope someone else does it."
+      },
+      {
+        "key": "B",
+        "text": "Do everything yourself so it's done right."
+      },
+      {
+        "key": "C",
+        "text": "Divide the tasks and set deadlines."
+      },
+      {
+        "key": "D",
+        "text": "Change groups immediately."
+      }
+    ],
+    "correctKey": "C",
+    "explanation": "Based on answer key.",
+    "nextLabel": "NEXT",
+    "quote": "“You bend impossible constraints to your will.”",
+    "citation": "Divergent cognition heuristics demonstrated superior stochastic flexibility.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/reality.png",
+    "svgPath": "uiux/logostones/reality.png"
+  },
+  {
+    "id": "space",
+    "number": "10",
+    "name": "SPACE STONE",
+    "domain": "Spatial Logic & Strategy",
+    "difficulty": "EASY",
+    "value": 100,
+    "directive": "QUESTION 1",
+    "question": "The Battle of Wakanda: Thanos's army is approaching, and your team is outnumbered. You have 500 soldiers and a powerful armored hero. What's the smartest strategy?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Send everyone in the same direction without a plan. Teamwork makes the dream work, right?"
+      },
+      {
+        "key": "B",
+        "text": "Use a narrow passage to funnel the enemies into a smaller group, making them easier to defend against."
+      },
+      {
+        "key": "C",
+        "text": "Send one soldier to fight the entire army. He looks confident."
+      },
+      {
+        "key": "D",
+        "text": "Ask the enemy to reschedule because you have an interrogation on Moodle at 7 AM."
+      }
+    ],
+    "correctKey": "B",
+    "explanation": "Funnel the enemies.",
+    "nextLabel": "NEXT",
+    "quote": "“You navigate multidimensional topology effortlessly.”",
+    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/space.png",
+    "svgPath": "uiux/logostones/space.png"
+  },
+  {
+    "id": "space",
+    "number": "11",
+    "name": "SPACE STONE",
+    "domain": "Spatial Logic & Strategy",
+    "difficulty": "MEDIUM",
+    "value": 100,
+    "directive": "QUESTION 2",
+    "question": "Emergency Exit: A fire alarm rings while you are in a crowded hall. What is the best strategy?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Run towards the source of the alarm."
+      },
+      {
+        "key": "B",
+        "text": "Take the clear emergency exit."
+      },
+      {
+        "key": "C",
+        "text": "Use the elevator."
+      },
+      {
+        "key": "D",
+        "text": "Hide under a table."
+      }
+    ],
+    "correctKey": "B",
+    "explanation": "Based on the answer key.",
+    "nextLabel": "NEXT",
+    "quote": "“You navigate multidimensional topology effortlessly.”",
+    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/space.png",
+    "svgPath": "uiux/logostones/space.png"
+  },
+  {
+    "id": "space",
+    "number": "12",
+    "name": "SPACE STONE",
+    "domain": "Spatial Logic & Strategy",
+    "difficulty": "HARD",
+    "value": 100,
+    "directive": "QUESTION 3",
+    "question": "The Infinity Heist: You need to retrieve an object from a guarded building. You have limited time, and you don't know the guards' positions. What should you do first?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Run straight in and hope everyone is too surprised to react."
+      },
+      {
+        "key": "B",
+        "text": "Shout, \"I'm here for the object!\" to avoid misunderstandings."
+      },
+      {
+        "key": "C",
+        "text": "Observe the area and identify a safe opportunity to enter."
+      },
+      {
+        "key": "D",
+        "text": "Check Talent to see if any of the guards are ESI students."
+      }
+    ],
+    "correctKey": "C",
+    "explanation": "Observe the area.",
+    "nextLabel": "NEXT",
+    "quote": "“You navigate multidimensional topology effortlessly.”",
+    "citation": "Topological mapping benchmarks established flawless shortest-path graph optimization.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/space.png",
+    "svgPath": "uiux/logostones/space.png"
+  },
+  {
+    "id": "power",
+    "number": "13",
+    "name": "POWER STONE",
+    "domain": "Cognitive Speed & High-Stakes Focus",
+    "difficulty": "VELOCITY-MAX",
+    "value": 150,
+    "isSpeedChallenge": true,
+    "timeLimitMs": 12000,
+    "directive": "QUESTION 1",
+    "question": "The One Winning Future: Doctor Strange examines 14,000,605 possible futures and discovers that only one leads to victory. What can we conclude?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Every future leads to victory"
+      },
+      {
+        "key": "B",
+        "text": "Exactly one of the futures he examined leads to victory."
+      },
+      {
+        "key": "C",
+        "text": "There are no possible winning futures, He checked the Analyse correction."
+      },
+      {
+        "key": "D",
+        "text": "He forgot to check Moodle for the answer key."
+      }
+    ],
+    "correctKey": "B",
+    "explanation": "Exactly one future leads to victory.",
+    "nextLabel": "NEXT",
+    "quote": "“Raw velocity channeled with unerring precision.”",
+    "citation": "Ultra-low cognitive latency under acute temporal countdown.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/power.png",
+    "svgPath": "uiux/logostones/power.png"
+  },
+  {
+    "id": "power",
+    "number": "14",
+    "name": "POWER STONE",
+    "domain": "Cognitive Speed & High-Stakes Focus",
+    "difficulty": "VELOCITY-MAX",
+    "value": 150,
+    "isSpeedChallenge": true,
+    "timeLimitMs": 12000,
+    "directive": "QUESTION 2",
+    "question": "Tony Stark's Secret Weapon: Tony Stark builds a metal suit that can fly and protect him during a fight. What is the suit's main practical advantage?",
+    "options": [
+      {
+        "key": "A",
+        "text": "It helps him fight while protecting his body."
+      },
+      {
+        "key": "B",
+        "text": "It guarantees he will never lose an argument with Captain America."
+      },
+      {
+        "key": "C",
+        "text": "It automatically finishes his university assignments."
+      },
+      {
+        "key": "D",
+        "text": "It makes him invisible whenever someone asks him to do group work."
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "It helps him fight while protecting his body.",
+    "nextLabel": "NEXT",
+    "quote": "“Raw velocity channeled with unerring precision.”",
+    "citation": "Ultra-low cognitive latency under acute temporal countdown.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/power.png",
+    "svgPath": "uiux/logostones/power.png"
+  },
+  {
+    "id": "power",
+    "number": "15",
+    "name": "POWER STONE",
+    "domain": "Cognitive Speed & High-Stakes Focus",
+    "difficulty": "VELOCITY-MAX",
+    "value": 150,
+    "isSpeedChallenge": true,
+    "timeLimitMs": 12000,
+    "directive": "QUESTION 3",
+    "question": "The World's Most Important Password: You need to connect to a Wi-Fi network. Someone gives you a piece of paper with the password written on it. What should you do?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enter the password exactly as written."
+      },
+      {
+        "key": "B",
+        "text": "Type your own name instead because confidence is key."
+      },
+      {
+        "key": "C",
+        "text": "Guess \"123456\" without even looking at the paper."
+      },
+      {
+        "key": "D",
+        "text": "Ask the router nicely to connect you."
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "Enter the password exactly as written.",
+    "nextLabel": "NEXT",
+    "quote": "“Raw velocity channeled with unerring precision.”",
+    "citation": "Ultra-low cognitive latency under acute temporal countdown.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/power.png",
+    "svgPath": "uiux/logostones/power.png"
+  },
+  {
+    "id": "soul",
+    "number": "16",
+    "name": "SOUL STONE",
+    "domain": "Intuition & Moral Decision-Making",
+    "difficulty": "OMEGA-1",
+    "value": 100,
+    "directive": "QUESTION 1",
+    "question": "The Incoming Asteroid: An asteroid is heading toward a planet. You have one chance to use a powerful device to save as many people as possible. Which plan makes the most sense?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use the device to redirect the asteroid away from the planet."
+      },
+      {
+        "key": "B",
+        "text": "Use it to build a giant statue commemorating the asteroid."
+      },
+      {
+        "key": "C",
+        "text": "Wait until the asteroid arrives before deciding what to do."
+      },
+      {
+        "key": "D",
+        "text": "Ask the asteroid to respect everyone's personal space."
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "Redirect the asteroid.",
+    "nextLabel": "NEXT",
+    "quote": "“You carry the intuitive gravity of true leadership.”",
+    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/soul.png",
+    "svgPath": "uiux/logostones/soul.png"
+  },
+  {
+    "id": "soul",
+    "number": "17",
+    "name": "SOUL STONE",
+    "domain": "Intuition & Moral Decision-Making",
+    "difficulty": "OMEGA-1",
+    "value": 100,
+    "directive": "QUESTION 2",
+    "question": "The Exam Crunch: You have an exam tomorrow and haven't studied at all. What is the best strategy?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Read every page of the textbook in one night."
+      },
+      {
+        "key": "B",
+        "text": "Go to sleep and accept your fate."
+      },
+      {
+        "key": "C",
+        "text": "Prioritize important topics and practise."
+      },
+      {
+        "key": "D",
+        "text": "Bribe the professor."
+      }
+    ],
+    "correctKey": "C",
+    "explanation": "Based on the answer key.",
+    "nextLabel": "NEXT",
+    "quote": "“You carry the intuitive gravity of true leadership.”",
+    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas.",
+    "snippetHtml": "",
+    "pngPath": "uiux/logostones/soul.png",
+    "svgPath": "uiux/logostones/soul.png"
+  },
+  {
+    "id": "soul",
+    "number": "18",
+    "name": "SOUL STONE",
+    "domain": "Intuition & Moral Decision-Making",
+    "difficulty": "OMEGA-1",
+    "value": 100,
+    "directive": "QUESTION 3",
+    "question": "The Five-Minute Time Machine: You can travel five minutes into the past, but only once. You accidentally submit the wrong file for an assignment, and the deadline is in two minutes. What is the best use of your power?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Go back and submit the correct file before the deadline."
+      },
+      {
+        "key": "B",
+        "text": "Go back to tell your friends about your time-travel abilities."
+      },
+      {
+        "key": "C",
+        "text": "Go back to change the colour of your notes."
+      },
+      {
+        "key": "D",
+        "text": "Go back to take a screenshot of yourself using the time machine."
+      }
+    ],
+    "correctKey": "A",
+    "explanation": "Submit the correct file.",
     "nextLabel": "FINALIZE EVALUATION & REVEAL STONE",
     "quote": "“You carry the intuitive gravity of true leadership.”",
-    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas with unyielding moral clarity and intuitive focus.",
+    "citation": "Ethical heuristic weights resolved complex systemic equilibrium dilemmas.",
+    "snippetHtml": "",
     "pngPath": "uiux/logostones/soul.png",
-    "svgPath": "uiux/logostones/soul.svg"
+    "svgPath": "uiux/logostones/soul.png"
   }
 ]

@@ -1,15 +1,20 @@
 @layer base {
-  html, body {
+
+  html,
+  body {
     margin: 0;
     padding: 0;
   }
+
   body {
     overscroll-behavior: none;
   }
-  main > :first-child {
+
+  main> :first-child {
     margin-top: 0 !important;
   }
-  main > :last-child {
+
+  main> :last-child {
     margin-bottom: 0 !important;
   }
 }
@@ -23,9 +28,21 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-6px); }
-  40%, 80% { transform: translateX(6px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
 }
 
 .shake {
@@ -60,8 +77,13 @@ input:focus {
 
 /* --- Scanning Grid Background --- */
 @keyframes scanline-drift {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(60px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(60px);
+  }
 }
 
 body::before {
@@ -71,8 +93,8 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: scanline-drift 8s linear infinite;
   opacity: 0.6;
@@ -80,10 +102,23 @@ body::before {
 
 /* Horizontal scanline sweep overlay */
 @keyframes scanline-sweep {
-  0%   { top: -4px; opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.6; }
-  100% { top: 100%; opacity: 0; }
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 body::after {
@@ -96,19 +131,25 @@ body::after {
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,180,173,0.15) 20%,
-    rgba(255,84,78,0.35) 50%,
-    rgba(255,180,173,0.15) 80%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(255, 180, 173, 0.15) 20%,
+      rgba(255, 84, 78, 0.35) 50%,
+      rgba(255, 180, 173, 0.15) 80%,
+      transparent 100%);
   animation: scanline-sweep 6s linear infinite;
 }
 
 /* --- Stone Glow Effect --- */
 @keyframes stone-pulse {
-  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.1)); }
-  50%      { filter: drop-shadow(0 0 14px rgba(255,255,255,0.25)); }
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.25));
+  }
 }
 
 .stone-glow {
@@ -121,12 +162,14 @@ body::after {
 }
 
 #view-home [aria-label="The Six Stones Spectrum"] .group:hover img {
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
 }
 
 /* --- Affinity Bar Animated Fill --- */
 @keyframes bar-fill-in {
-  from { width: 0%; }
+  from {
+    width: 0%;
+  }
 }
 
 .affinity-bar {
@@ -135,21 +178,30 @@ body::after {
 
 /* --- Header SOAI Logo Glow --- */
 #nav-brand svg {
-  filter: drop-shadow(0 0 6px rgba(255,213,34,0.35));
+  filter: drop-shadow(0 0 6px rgba(255, 213, 34, 0.35));
   transition: filter 0.3s ease;
 }
 
 #nav-brand:hover svg {
-  filter: drop-shadow(0 0 12px rgba(255,213,34,0.6));
+  filter: drop-shadow(0 0 12px rgba(255, 213, 34, 0.6));
 }
 
 /* --- Ambient Corner Data-Point Glows --- */
 @keyframes corner-breathe {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50%      { opacity: 0.5; transform: scale(1.04); }
+
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.04);
+  }
 }
 
-#view-home .relative > .absolute.-z-10 div {
+#view-home .relative>.absolute.-z-10 div {
   animation: corner-breathe 5s ease-in-out infinite;
 }
 
@@ -167,12 +219,11 @@ body::after {
   right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,84,78,0.5) 30%,
-    rgba(255,180,173,0.7) 50%,
-    rgba(255,84,78,0.5) 70%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(255, 84, 78, 0.5) 30%,
+      rgba(255, 180, 173, 0.7) 50%,
+      rgba(255, 84, 78, 0.5) 70%,
+      transparent 100%);
   opacity: 0.8;
 }
 
@@ -186,25 +237,41 @@ body::after {
 }
 
 #result-winner-stone-img {
-  filter: drop-shadow(0 0 16px var(--winner-glow-color, rgba(255,255,255,0.3)));
+  filter: drop-shadow(0 0 16px var(--winner-glow-color, rgba(255, 255, 255, 0.3)));
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 /* --- Data-Graph Dots Animation (result affinity panel) --- */
 @keyframes data-dot-blink {
-  0%, 80%, 100% { opacity: 0.3; }
-  40%           { opacity: 1; }
+
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+
+  40% {
+    opacity: 1;
+  }
 }
 
 #result-affinity-rows .group:hover {
-  background-color: rgba(42,42,43,0.8);
+  background-color: rgba(42, 42, 43, 0.8);
 }
 
 /* --- Live Badge Pulse Enhancement --- */
 @keyframes live-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(255,84,78,0.5); }
-  70%  { box-shadow: 0 0 0 6px rgba(255,84,78,0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,84,78,0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 84, 78, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 84, 78, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 84, 78, 0);
+  }
 }
 
 header .animate-pulse {
@@ -213,16 +280,16 @@ header .animate-pulse {
 
 /* --- Footer / Header Micro Separator Glow --- */
 header {
-  box-shadow: 0 1px 0 0 rgba(255,255,255,0.03), 0 4px 20px -4px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.03), 0 4px 20px -4px rgba(0, 0, 0, 0.5);
 }
 
 footer {
-  box-shadow: 0 -1px 0 0 rgba(255,255,255,0.03), 0 -4px 20px -4px rgba(0,0,0,0.4);
+  box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.03), 0 -4px 20px -4px rgba(0, 0, 0, 0.4);
 }
 
 /* --- Quiz Progress Bar Glow --- */
 .bg-primary-fixed {
-  box-shadow: 0 0 8px rgba(255,218,214,0.3);
+  box-shadow: 0 0 8px rgba(255, 218, 214, 0.3);
 }
 
 /* --- Kiosk Reset Rotating Icon Enhancement --- */
@@ -248,12 +315,13 @@ main::before {
 }
 
 /* Ensure all real content sits above background overlays */
-main > * {
+main>* {
   position: relative;
   z-index: 1;
 }
 
-header, footer {
+header,
+footer {
   position: relative;
   z-index: 50;
 }
@@ -272,10 +340,9 @@ header, footer {
   width: 60%;
   height: 100%;
   background: linear-gradient(90deg,
-    transparent,
-    rgba(255,255,255,0.02),
-    transparent
-  );
+      transparent,
+      rgba(255, 255, 255, 0.02),
+      transparent);
   transition: left 0.5s ease;
   pointer-events: none;
 }
@@ -299,7 +366,7 @@ header, footer {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 0 20px -4px rgba(255,84,78,0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px -4px rgba(255, 84, 78, 0.3);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -312,8 +379,15 @@ header, footer {
 
 /* --- Animated Typing Cursor for Terminal Feel --- */
 @keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* --- Status Indicator Upgrade --- */
@@ -327,5 +401,5 @@ img[src*="logostones"] {
 }
 
 img[src*="logostones"]:hover {
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }

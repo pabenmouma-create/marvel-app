@@ -13,249 +13,129 @@
 
   let STONES_DATA = [
     {
-      id: 'mind',
-      number: '01',
-      name: 'MIND STONE',
-      domain: 'Logic & Deductive Reasoning',
-      moduleTag: 'MODULE 01 • LOGIC & PATTERN DECONSTRUCTION',
-      difficulty: 'ALPHA-1',
-      value: 100,
-      color: '#EAB308',
-      colorRing: 'ring-[#EAB308]/20',
-      textColor: 'text-[#EAB308]',
-      svgPath: 'uiux/logostones/mind.svg',
-      pngPath: 'uiux/logostones/mind.png',
-      directive: 'DIRECTIVE: IDENTIFY RECURSION TARGET',
-      question: 'Find the next number in the sequence:',
-      snippetHtml: `
-        <div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT flex items-center justify-between my-space-xs border border-outline-variant/20">
-          <div class="flex items-center space-x-space-md font-meta-mono text-title-sm text-on-surface">
-            <span class="text-tertiary">2</span>
-            <span class="text-primary-container">→</span>
-            <span class="text-tertiary">4</span>
-            <span class="text-primary-container">→</span>
-            <span class="text-tertiary">8</span>
-            <span class="text-primary-container">→</span>
-            <span class="text-tertiary">16</span>
-            <span class="text-primary-container">→</span>
-            <span class="text-primary font-bold bg-surface-container-high px-space-sm py-0.5 rounded-DEFAULT">?</span>
-          </div>
-          <div class="flex items-center space-x-space-xs text-secondary font-meta-mono text-meta-mono">
-            <span class="material-symbols-outlined text-[16px]">functions</span>
-            <span>f(n) = 2ⁿ</span>
-          </div>
-        </div>
-      `,
+      id: 'mind', number: '01', name: 'MIND STONE',
+      domain: 'Logic & Deductive Reasoning', difficulty: 'EASY', value: 100,
+      color: '#EAB308', colorRing: 'ring-[#EAB308]/20', textColor: 'text-[#EAB308]',
+      svgPath: 'uiux/logostones/mind.png', pngPath: 'uiux/logostones/mind.png',
+      directive: 'MIND STONE — Tests Intelligence & Logic',
+      question: 'Guess Who? I can fly, but I have no wings. I have a glowing heart, but it is made of metal. I\'m a genius who built a powerful suit to save the world. Who am I?',
+      snippetHtml: '',
       options: [
-        { key: 'A', text: '24' },
-        { key: 'B', text: '32' },
-        { key: 'C', text: '30' },
-        { key: 'D', text: '36' }
+        { key: 'A', text: 'Thor — unemployed without his hammer.' },
+        { key: 'B', text: 'Spider-Man / Peter Parker — saving the world while failing to save his sleep schedule.' },
+        { key: 'C', text: 'Batman — wrong universe, bro.' },
+        { key: 'D', text: 'Iron Man / Tony Stark — the billionaire who made therapy everyone else\'s problem.' }
       ],
-      correctKey: 'B',
-      explanation: 'Sequence adheres strictly to an exponential doubling progression f(n) = 2ⁿ. After 16 (2⁴), the target node resolves to 32 (2⁵) across the primary recursion stack.',
+      correctKey: 'D',
+      explanation: 'It\'s Tony Stark — the genius billionaire with the glowing arc reactor heart and the iconic Iron Man suit.',
       nextLabel: 'NEXT CHALLENGE: TIME STONE',
-      quote: '“Your intellect deconstructs all complexity.”',
-      citation: 'Analytical throughput reached peak structural integrity with zero recursive friction across abstract symbolic logic gates.'
+      quote: '"Your intellect deconstructs all complexity."',
+      citation: 'Analytical throughput reached peak structural integrity.'
     },
     {
-      id: 'time',
-      number: '02',
-      name: 'TIME STONE',
-      domain: 'Pattern Recognition & Memory',
-      moduleTag: 'MODULE 02_ALPHA / STEP 03 RECURSION',
-      difficulty: 'ALPHA-2',
-      value: 100,
-      color: '#10B981',
-      colorRing: 'ring-[#10B981]/20',
-      textColor: 'text-[#10B981]',
-      svgPath: 'uiux/logostones/time.svg',
-      pngPath: 'uiux/logostones/time.png',
-      directive: 'QUERY EVALUATION • TEMPORAL RECONSTRUCTION',
-      question: 'Which of the following temporal sequence rules was inverted in Phase 1?',
-      snippetHtml: `
-        <div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs">
-          <div class="flex items-center space-x-2 text-on-surface">
-            <span class="text-tertiary">REG::T₀: [A → B → C]</span>
-            <span class="text-[#10B981]">──►</span>
-            <span class="text-primary font-bold">REG::T₁: [C → B → A]</span>
-          </div>
-          <div class="text-secondary">[PARITY FLIP DETECTED AT STEP 3]</div>
-        </div>
-      `,
+      id: 'time', number: '02', name: 'TIME STONE',
+      domain: 'Pattern Recognition & Memory', difficulty: 'MEDIUM', value: 100,
+      color: '#10B981', colorRing: 'ring-[#10B981]/20', textColor: 'text-[#10B981]',
+      svgPath: 'uiux/logostones/time.png', pngPath: 'uiux/logostones/time.png',
+      directive: 'TIME STONE — Tests Memory & Observation',
+      question: 'The Mysterious Disappearance: Which two characters disappeared in Slide 2?',
+      snippetHtml: '',
       options: [
-        { key: 'A', text: 'Chronological forward shift' },
-        { key: 'B', text: 'Reverse cyclical recurrence' },
-        { key: 'C', text: 'Static index parity' },
-        { key: 'D', text: 'Linear step expansion' }
-      ],
-      correctKey: 'B',
-      explanation: 'Inverted recursion occurred at Step 3 where the sequence flipped parity. The backward stack trace verifies that cycle indexing was decremented rather than incremented across the primary register.',
-      nextLabel: 'NEXT CHALLENGE: REALITY STONE',
-      quote: '“You see what others forget.”',
-      citation: 'Cognitive latency indices placed respondent in the 99th percentile for predictive causal deduction across temporal logic gates.'
-    },
-    {
-      id: 'reality',
-      number: '03',
-      name: 'REALITY STONE',
-      domain: 'Lateral Thinking & Creativity',
-      moduleTag: 'MODULE 03 • PERCEPTION & HEURISTIC PARADOX',
-      difficulty: 'BETA-1',
-      value: 100,
-      color: '#EF4444',
-      colorRing: 'ring-[#EF4444]/20',
-      textColor: 'text-[#EF4444]',
-      svgPath: 'uiux/logostones/reality.svg',
-      pngPath: 'uiux/logostones/reality.png',
-      directive: 'DIRECTIVE: PARADOX RESOLUTION & LATERAL BRANCHING',
-      question: 'An AI perceptual filter classifies an impossible visual anomaly. Standard inference aborts. Which lateral adaptation restores operational validity without corrupting historical weights?',
-      snippetHtml: `
-        <div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs">
-          <div class="flex items-center space-x-2 text-on-surface">
-            <span class="text-[#EF4444] font-bold">ANOMALY::ALERT:</span>
-            <span class="text-secondary">P(Reality | SensorData) = 0.0001</span>
-          </div>
-          <div class="text-secondary">[INFERENCE_STATE: SUSPENDED]</div>
-        </div>
-      `,
-      options: [
-        { key: 'A', text: 'Clamp all divergent inputs to the nearest training centroid' },
-        { key: 'B', text: 'Branch a stochastic latent subspace to model divergent physics' },
-        { key: 'C', text: 'Suppress anomaly logs and purge the perceptual cache' },
-        { key: 'D', text: 'Overwrite historical ground-truth priors with incoming sensor stream' }
-      ],
-      correctKey: 'B',
-      explanation: 'Reality alteration demands latent branching rather than deterministic clamping. Branching stochastic subspaces prevents catastrophic forgetting while assimilating paradoxical anomaly topologies.',
-      nextLabel: 'NEXT CHALLENGE: SPACE STONE',
-      quote: '“You bend impossible constraints to your will.”',
-      citation: 'Divergent cognition heuristics demonstrated superior stochastic flexibility under conflicting non-linear reality states.'
-    },
-    {
-      id: 'space',
-      number: '04',
-      name: 'SPACE STONE',
-      domain: 'Spatial Logic & Strategy',
-      moduleTag: 'MODULE 04 • TOPOLOGICAL ROUTING & GRAPH GEOMETRY',
-      difficulty: 'BETA-2',
-      value: 100,
-      color: '#3B82F6',
-      colorRing: 'ring-[#3B82F6]/20',
-      textColor: 'text-[#3B82F6]',
-      svgPath: 'uiux/logostones/space.svg',
-      pngPath: 'uiux/logostones/space.png',
-      directive: 'DIRECTIVE: MINIMAL NON-EUCLIDEAN MANHATTAN TRAVERSAL',
-      question: 'In a 3D grid matrix with coordinates (x, y, z), what is the minimum hop count to traverse from (0,0,0) to (3,4,2) without diagonal leaps?',
-      snippetHtml: `
-        <div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs">
-          <div class="flex items-center space-x-2 text-on-surface">
-            <span class="text-tertiary">NODE_ORIGIN: (0, 0, 0)</span>
-            <span class="text-[#3B82F6]">════►</span>
-            <span class="text-on-surface font-bold">NODE_TARGET: (3, 4, 2)</span>
-          </div>
-          <div class="text-secondary">METRIC: L1 Manhattan Distance = |Δx| + |Δy| + |Δz|</div>
-        </div>
-      `,
-      options: [
-        { key: 'A', text: '7 hops' },
-        { key: 'B', text: '8 hops' },
-        { key: 'C', text: '9 hops' },
-        { key: 'D', text: '12 hops' }
-      ],
-      correctKey: 'C',
-      explanation: 'In orthogonal L1 grid space, the non-diagonal distance calculates strictly as |3-0| + |4-0| + |2-0| = 3 + 4 + 2 = 9 discrete dimensional steps.',
-      nextLabel: 'NEXT CHALLENGE: POWER STONE',
-      quote: '“You navigate multidimensional topology effortlessly.”',
-      citation: 'Topological mapping benchmarks established flawless shortest-path graph optimization across high-dimensional tensor space.'
-    },
-    {
-      id: 'power',
-      number: '05',
-      name: 'POWER STONE',
-      domain: 'Cognitive Speed & High-Stakes Focus',
-      moduleTag: 'MODULE 05 // HIGH-STAKES SPEED MATRIX',
-      difficulty: 'VELOCITY-MAX',
-      value: 150,
-      color: '#A855F7',
-      colorRing: 'ring-[#A855F7]/20',
-      textColor: 'text-[#A855F7]',
-      svgPath: 'uiux/logostones/power.svg',
-      pngPath: 'uiux/logostones/power.png',
-      isSpeedChallenge: true,
-      timeLimitMs: 12000, // 12 seconds high-stakes countdown
-      directive: 'DIRECTIVE IDENTIFIER // M-49 (+150 PTS ACCURACY BONUS)',
-      question: 'Resolve the highest sum path before time expires:',
-      subtext: 'Traverse strictly from Top Row to Bottom Row through orthogonally adjacent memory nodes. Calculate accumulated weight.',
-      snippetHtml: `
-        <div class="w-full flex justify-center py-space-sm">
-          <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-2xl flex flex-col space-y-2 border border-outline-variant/20">
-            <div class="flex items-center space-x-2">
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">14</div>
-              <div class="w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim">29</div>
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">08</div>
-            </div>
-            <div class="flex items-center space-x-2">
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">42</div>
-              <div class="w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-fixed-dim">19</div>
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">33</div>
-            </div>
-            <div class="flex items-center space-x-2">
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">05</div>
-              <div class="w-20 h-16 rounded bg-surface-container-high flex items-center justify-center font-meta-mono text-headline-md font-bold text-primary-container">61</div>
-              <div class="w-20 h-16 rounded bg-surface-container flex items-center justify-center font-meta-mono text-headline-md font-bold text-on-surface">12</div>
-            </div>
-          </div>
-        </div>
-      `,
-      options: [
-        { key: 'A', text: 'Path Alpha: [14 → 42 → 61]', sum: '117' },
-        { key: 'B', text: 'Path Beta: [29 → 42 → 61]', sum: '132' },
-        { key: 'C', text: 'Path Gamma: [29 → 19 → 61]', sum: '109' },
-        { key: 'D', text: 'Path Delta: [08 → 33 → 61]', sum: '102' }
-      ],
-      correctKey: 'B',
-      explanation: 'Path Beta [29 + 42 + 61 = 132] resolves the global maximum tensor path. The cognitive speed index verifies rapid convergence within the acute temporal envelope.',
-      nextLabel: 'NEXT CHALLENGE: SOUL STONE',
-      quote: '“Raw velocity channeled with unerring precision.”',
-      citation: 'Ultra-low cognitive latency under acute temporal countdown executed decisive maximum-weight tensor paths without cognitive hesitation.'
-    },
-    {
-      id: 'soul',
-      number: '06',
-      name: 'SOUL STONE',
-      domain: 'Intuition & Moral Decision-Making',
-      moduleTag: 'MODULE 06 • ETHICAL HEURISTICS & INTUITIVE SYNTHESIS',
-      difficulty: 'OMEGA-1',
-      value: 100,
-      color: '#F97316',
-      colorRing: 'ring-[#F97316]/20',
-      textColor: 'text-[#F97316]',
-      svgPath: 'uiux/logostones/soul.svg',
-      pngPath: 'uiux/logostones/soul.png',
-      directive: 'DIRECTIVE: THE EQUILIBRIUM SACRIFICE DILEMMA',
-      question: 'A cluster-wide fault will collapse an entire neural network serving 10,000 distributed agent processes unless a single critical core agent is permanently decoupled. What is the soul-resonant protocol?',
-      snippetHtml: `
-        <div class="bg-surface-container-lowest p-space-lg rounded-DEFAULT flex flex-col md:flex-row items-start md:items-center justify-between gap-2 my-space-xs border border-outline-variant/20 font-meta-mono text-xs">
-          <div class="flex items-center space-x-2 text-on-surface">
-            <span class="text-[#F97316] font-bold">EQUILIBRIUM_TENSOR:</span>
-            <span>[1 CORE SACRIFICE] ◄► [10,000 COLLAPSE]</span>
-          </div>
-          <div class="text-secondary">IRREVERSIBLE STATE TRANSITION</div>
-        </div>
-      `,
-      options: [
-        { key: 'A', text: 'Decouple the individual core to guarantee collective continuum survival' },
-        { key: 'B', text: 'Refuse active intervention and distribute decay entropy equally across all nodes' },
-        { key: 'C', text: 'Trigger emergency hard shutdown across all 10,001 active processes' },
-        { key: 'D', text: 'Postpone decision indefinitely awaiting external supervisor quorum' }
+        { key: 'A', text: 'Spider-Man and Loki — two legends vanished without saying goodbye.' },
+        { key: 'B', text: 'Iron Man and Cyclops — the genius and the team leader are missing.' },
+        { key: 'C', text: 'Doctor Doom and Vision — one planned the chaos, the other saw it coming.' },
+        { key: 'D', text: 'Doctor Strange and Vision — one opened a portal, the other disappeared into it.' }
       ],
       correctKey: 'A',
-      explanation: 'The Soul Stone demands decisive ethical fortitude. Accepting the burden of purposeful sacrifice to preserve the broader continuum represents the highest intuitive equilibrium.',
+      explanation: 'Spider-Man and Loki disappeared in Slide 2.',
+      nextLabel: 'NEXT CHALLENGE: REALITY STONE',
+      quote: '"You see what others forget."',
+      citation: 'Cognitive latency indices placed respondent in the 99th percentile.'
+    },
+    {
+      id: 'reality', number: '03', name: 'REALITY STONE',
+      domain: 'Lateral Thinking & Creativity', difficulty: 'MEDIUM', value: 100,
+      color: '#EF4444', colorRing: 'ring-[#EF4444]/20', textColor: 'text-[#EF4444]',
+      svgPath: 'uiux/logostones/reality.png', pngPath: 'uiux/logostones/reality.png',
+      directive: 'REALITY STONE — Real-life problems. Unrealistic solutions.',
+      question: 'Thanos works in customer service. An angry customer calls because their order never arrived. What is the most appropriate response?',
+      snippetHtml: '',
+      options: [
+        { key: 'A', text: '"I\'m sorry for the inconvenience. Let me check your order and help resolve this."' },
+        { key: 'B', text: '"Sir, please calm down before I remove half of your family."' },
+        { key: 'C', text: '"Have you tried turning the universe off and on again?"' },
+        { key: 'D', text: '"Your complaint has been received. Half of our team is now unavailable."' }
+      ],
+      correctKey: 'A',
+      explanation: 'A is the most appropriate customer service response.',
+      nextLabel: 'NEXT CHALLENGE: SPACE STONE',
+      quote: '"You bend impossible constraints to your will."',
+      citation: 'Divergent cognition heuristics demonstrated superior stochastic flexibility.'
+    },
+    {
+      id: 'space', number: '04', name: 'SPACE STONE',
+      domain: 'Strategy & Decisions', difficulty: 'MEDIUM', value: 100,
+      color: '#3B82F6', colorRing: 'ring-[#3B82F6]/20', textColor: 'text-[#3B82F6]',
+      svgPath: 'uiux/logostones/space.png', pngPath: 'uiux/logostones/space.png',
+      directive: 'SPACE STONE — Strategy & Decisions',
+      question: 'Thanos\'s army is approaching, and your team is outnumbered. You have 500 soldiers and a powerful armored hero. What\'s the smartest strategy?',
+      snippetHtml: '',
+      options: [
+        { key: 'A', text: 'Send everyone in the same direction without a plan. Teamwork makes the dream work, right?' },
+        { key: 'B', text: 'Use a narrow passage to funnel the enemies into a smaller group, making them easier to defend against.' },
+        { key: 'C', text: 'Send one soldier to fight the entire army. He looks confident.' },
+        { key: 'D', text: 'Ask the enemy to reschedule because you have an interrogation on Moodle at 7 AM.' }
+      ],
+      correctKey: 'B',
+      explanation: 'Funneling enemies through a narrow passage reduces their numerical advantage.',
+      nextLabel: 'NEXT CHALLENGE: POWER STONE',
+      quote: '"You navigate multidimensional topology effortlessly."',
+      citation: 'Topological mapping benchmarks established flawless shortest-path graph optimization.'
+    },
+    {
+      id: 'power', number: '05', name: 'POWER STONE',
+      domain: 'Cognitive Speed & Quick Thinking', difficulty: 'VELOCITY-MAX', value: 150,
+      color: '#A855F7', colorRing: 'ring-[#A855F7]/20', textColor: 'text-[#A855F7]',
+      svgPath: 'uiux/logostones/power.png', pngPath: 'uiux/logostones/power.png',
+      isSpeedChallenge: true, timeLimitMs: 12000,
+      directive: 'POWER STONE — Quick Thinking, Short answers.',
+      question: 'Doctor Strange examines 14,000,605 possible futures and discovers that only one leads to victory. What can we conclude?',
+      snippetHtml: '',
+      options: [
+        { key: 'A', text: 'Every future leads to victory.' },
+        { key: 'B', text: 'Exactly one of the futures he examined leads to victory.' },
+        { key: 'C', text: 'There are no possible winning futures. He checked the Analyse correction.' },
+        { key: 'D', text: 'He forgot to check Moodle for the answer key.' }
+      ],
+      correctKey: 'B',
+      explanation: 'Exactly one of the 14,000,605 futures leads to victory.',
+      nextLabel: 'NEXT CHALLENGE: SOUL STONE',
+      quote: '"Raw velocity channeled with unerring precision."',
+      citation: 'Ultra-low cognitive latency under acute temporal countdown.'
+    },
+    {
+      id: 'soul', number: '06', name: 'SOUL STONE',
+      domain: 'Choices & Consequences', difficulty: 'OMEGA-1', value: 100,
+      color: '#F97316', colorRing: 'ring-[#F97316]/20', textColor: 'text-[#F97316]',
+      svgPath: 'uiux/logostones/soul.png', pngPath: 'uiux/logostones/soul.png',
+      directive: 'SOUL STONE — Every decision has consequences.',
+      question: 'An asteroid is heading toward a planet. You have one chance to use a powerful device to save as many people as possible. Which plan makes the most sense?',
+      snippetHtml: '',
+      options: [
+        { key: 'A', text: 'Use the device to redirect the asteroid away from the planet.' },
+        { key: 'B', text: 'Use it to build a giant statue commemorating the asteroid.' },
+        { key: 'C', text: 'Wait until the asteroid arrives before deciding what to do.' },
+        { key: 'D', text: 'Ask the asteroid to respect everyone\'s personal space.' }
+      ],
+      correctKey: 'A',
+      explanation: 'Redirecting the asteroid is the only logical plan that saves the most lives.',
       nextLabel: 'FINALIZE EVALUATION & REVEAL STONE',
-      quote: '“You carry the intuitive gravity of true leadership.”',
-      citation: 'Ethical heuristic weights resolved complex systemic equilibrium dilemmas with unyielding moral clarity and intuitive focus.'
+      quote: '"You carry the intuitive gravity of true leadership."',
+      citation: 'Ethical heuristic weights resolved complex systemic equilibrium dilemmas.'
     }
   ];
+
+  // Default initial leaderboard cache
 
   async function loadQuestions() {
     try {
@@ -263,14 +143,15 @@
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          STONES_DATA = data.map((q) => {
-            const fallback = STONES_DATA.find((s) => s.id === q.id) || {};
-            return {
+          STONES_DATA.length = 0;
+          data.forEach(q => {
+            const fallback = { color: '#EAB308', colorRing: 'ring-[#EAB308]/20', textColor: 'text-[#EAB308]' };
+            STONES_DATA.push({
               ...fallback,
               ...q,
-              pngPath: q.pngPath || fallback.pngPath || `uiux/logostones/${q.id || fallback.id}.png`,
-              svgPath: q.svgPath || fallback.svgPath || `uiux/logostones/${q.id || fallback.id}.svg`
-            };
+              pngPath: q.pngPath || `uiux/logostones/${q.id}.png`,
+              svgPath: q.pngPath || `uiux/logostones/${q.id}.png`
+            });
           });
           console.log('[Kiosk] Loaded questions.json (' + data.length + ' challenges)');
         }
@@ -280,14 +161,13 @@
     }
   }
 
-  // Default initial leaderboard cache
-  const INITIAL_LEADERBOARD = [
-    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308', svgPath: 'uiux/logostones/mind.svg', pngPath: 'uiux/logostones/mind.png' },
-    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981', svgPath: 'uiux/logostones/time.svg', pngPath: 'uiux/logostones/time.png' },
-    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7', svgPath: 'uiux/logostones/power.svg', pngPath: 'uiux/logostones/power.png' },
-    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6', svgPath: 'uiux/logostones/space.svg', pngPath: 'uiux/logostones/space.png' },
-    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316', svgPath: 'uiux/logostones/soul.svg', pngPath: 'uiux/logostones/soul.png' },
-    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444', svgPath: 'uiux/logostones/reality.svg', pngPath: 'uiux/logostones/reality.png' }
+    const INITIAL_LEADERBOARD = [
+    { rank: '01', name: 'Dr. Sarah Chen', stone: 'Mind', affinity: 96, score: 980, color: '#EAB308', svgPath: 'uiux/logostones/mind.png', pngPath: 'uiux/logostones/mind.png' },
+    { rank: '02', name: 'Alex Mercer', stone: 'Time', affinity: 94, score: 940, color: '#10B981', svgPath: 'uiux/logostones/time.png', pngPath: 'uiux/logostones/time.png' },
+    { rank: '03', name: 'Kaelen Voss', stone: 'Power', affinity: 91, score: 910, color: '#A855F7', svgPath: 'uiux/logostones/power.png', pngPath: 'uiux/logostones/power.png' },
+    { rank: '04', name: 'Elena Rostova', stone: 'Space', affinity: 87, score: 870, color: '#3B82F6', svgPath: 'uiux/logostones/space.png', pngPath: 'uiux/logostones/space.png' },
+    { rank: '05', name: 'Tarek Benali', stone: 'Soul', affinity: 84, score: 830, color: '#F97316', svgPath: 'uiux/logostones/soul.png', pngPath: 'uiux/logostones/soul.png' },
+    { rank: '06', name: 'Zoya Moreau', stone: 'Reality', affinity: 81, score: 800, color: '#EF4444', svgPath: 'uiux/logostones/reality.png', pngPath: 'uiux/logostones/reality.png' }
   ];
 
   // ========================================================
@@ -545,11 +425,11 @@
     const totalStones = STONES_DATA.length;
     const progressSegmentsHtml = Array.from({ length: totalStones }, (_, i) => {
       if (i < index) {
-        return `<div class="h-full bg-on-surface"></div>`;
+        return `<div class="h-full bg-on-surface flex-1"></div>`;
       } else if (i === index) {
-        return `<div class="h-full bg-primary-fixed"></div>`;
+        return `<div class="h-full bg-primary-fixed flex-1"></div>`;
       } else {
-        return `<div class="h-full bg-surface-container-high"></div>`;
+        return `<div class="h-full bg-surface-container-high flex-1"></div>`;
       }
     }).join('');
 
@@ -599,7 +479,7 @@
         <div class="w-full flex items-center justify-between">
           <div class="flex items-center space-x-space-sm">
             ${stone.svgPath ? `<img src="${stone.svgPath}" alt="${stone.name}" class="w-7 h-7 object-contain shrink-0" />` : `<span class="w-2.5 h-2.5 rounded-full inline-block" style="background-color: ${stone.color};"></span>`}
-            <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface">STONE ${stone.number} / 06</span>
+            <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface">CHALLENGE ${index + 1} / ${totalStones}</span>
             <span class="text-tertiary-container font-meta-mono text-meta-mono">//</span>
             <span class="font-label-caps text-label-caps uppercase tracking-wider" style="color: ${stone.color};">${stone.name}</span>
           </div>
@@ -614,8 +494,8 @@
             </div>
           </div>
         </div>
-        <!-- Segmented Linear Progress Tracker (1 to 6) -->
-        <div class="w-full grid grid-cols-6 gap-space-xs h-1 bg-surface-container-low rounded-DEFAULT overflow-hidden">
+        <!-- Segmented Linear Progress Tracker -->
+        <div class="w-full flex gap-space-xs h-1 bg-surface-container-low rounded-DEFAULT overflow-hidden">
           ${progressSegmentsHtml}
         </div>
       </div>
